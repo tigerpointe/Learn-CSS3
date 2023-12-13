@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!--
+A CSS3 demo that displays a thermometer (without using images).
+
+Nested divs with background colors and rounded borders are used to "draw" the
+thermometer onto a page.  Any value from 0 to 100 can be rendered by setting
+the percentage height of the colored div.
+
+The body font size is defined using viewport units, allowing the page to be
+responsive to changes in the device size.  Child elements are defined using
+conventional "em" units which represent a percentage of the current font size.
+
+Mobile phones, tablets and desktops all utilize different viewport dimensions.
+By defining a page relative to the viewport, with child elements relative to
+the page, multiple devices can be supported from a single layout.
+
+Never use a viewport unit alone, otherwise the ability to zoom on text will be
+lost (since the font size will always be related to the viewport).  Instead,
+start with a fixed font size and then add the viewport value using the "calc"
+function.
+
+CSS "@media" rules can be used to further optimize the layout.  Always embrace
+the Zen of Fluidity.
+
+https://github.com/tigerpointe
+History:
+01.00 2023-Dec-05 Scott S. Initial release.
+
+MIT License
+
+Copyright (c) 2023 TigerPointe Software, LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Please consider giving to cancer research.
+https://braintumor.org/
+https://www.cancer.org/
+-->
+<html lang="en">
+<head>
+
+<title>CSS3 Thermometer</title>
+<meta charset="utf-8" />
+
+<!-- Page Styles (not related to the thermometer) -->
+<style type="text/css">
+body
+{
+    background-color: whitesmoke;
+    color: darkslategray;
+    font-family: sans-serif;
+    font-size: calc(0.5em + 1.5vh); /* fixed size + viewport height */
+    text-align: center;
+}
+a:link
+{
+    color: dodgerblue;
+    text-decoration: none;
+}
+a:visited
+{
+    color: dodgerblue;
+    text-decoration: none;
+}
+a:focus
+{
+    color: crimson;
+    text-decoration: underline;
+}
+a:hover
+{
+    color: crimson;
+    text-decoration: underline;
+}
+a:active
+{
+    color: crimson;
+    text-decoration: underline;
+}
+.control-panel
+{
+    border-bottom: 0.15em solid steelblue;
+    border-left: 0.15em solid lightsteelblue;
+    border-radius: 0.5em;
+    border-right: 0.15em solid steelblue;
+    border-top: 0.15em solid lightsteelblue;
+    box-shadow: 0.25em 0.25em 0.25em dimgray;
+    color: royalblue;
+    display: inline-block;
+    margin: 0.5em;
+    padding: 0.75em;
+    text-align: left;
+    text-shadow: 0 0 0.05em black;
+}
+.control-panel .title
+{
+    font-weight: bolder;
+    margin-bottom: 0.5em;
+}
+.control-panel a
+{
+    display: block;
+    margin-left: 3.5em;
+}
+@media print
+{
+    .control-panel { box-shadow: none; text-shadow: none; }
+}
+</style>
+
+<!-- Thermometer Styles -->
+<!-- Copyright (c) 2023 TigerPointe Software, LLC -->
+<style type="text/css">
+.thermometer
+{
+    background: linear-gradient(to right, lightblue, white, white, lightblue);
+    border-bottom: 0.25em solid steelblue;
+    border-left: 0.25em solid lightsteelblue;
+    border-radius: 0.5em;
+    border-right: 0.25em solid steelblue;
+    border-top: 0.25em solid lightsteelblue;
+    box-shadow: 0.25em 0.25em 0.25em dimgray;
+    display: inline-block;
+    margin: 0.5em;
+    padding: 1em;
+}
+.thermometer .bulb
+{
+    background: radial-gradient(circle, red, darkred);
+    border: 0.25em solid lightblue;
+    border-radius: 50%;
+    box-shadow: 0.25em 0.25em 0.25em dimgray;
+    height: 3em;
+    margin: 0 auto 0 auto;
+    position: relative;
+    width: 3em;
+}
+.thermometer .stem
+{
+    background: linear-gradient(to right, lightblue, lightcyan, lightblue);
+    border-color: lightblue;
+    border-radius: 0.25em;
+    border-style: solid;
+    border-width: 0.25em 0.25em 0 0.25em;
+    box-shadow: 0.25em 0.25em 0.25em dimgray;
+    height: 10em;
+    margin: 0 auto -0.375em auto;
+    position: relative;
+    width: 1.5em;
+    z-index: 1;
+}
+.thermometer .stem .tick
+{
+    background-color: whitesmoke;
+    border-radius: 25%;
+    box-shadow: 0 0 0.25em black;
+    height: 0.25em;
+    margin-left: 0.35em;
+    position: absolute;
+    z-index: 2;
+}
+.thermometer .stem .tick-00
+{
+    bottom: 0;     /* 0% up from bottom  */
+}
+.thermometer .stem .tick-25
+{
+    bottom: 2.5em; /* 25% up from bottom */
+}
+.thermometer .stem .tick-50
+{
+    bottom: 5em;   /* 50% up from bottom */
+}
+.thermometer .stem .tick-75
+{
+    bottom: 7.5em; /* 75% up from bottom */
+}
+.thermometer .stem .tick .tick-label
+{
+    color: whitesmoke;
+    font-family: sans-serif;
+    font-size: 0.75em;
+    font-weight: bolder;
+    padding-top: 0.5em;
+    text-shadow: 0 0 0.25em black;
+}
+.thermometer .stem .value-label
+{
+    color: whitesmoke;
+    font-family: sans-serif;
+    font-size: 1.5em;
+    font-weight: bolder;
+    margin-left: 0.75em;
+    position: absolute;
+    text-shadow: 0 0 0.25em black;
+}
+.thermometer .stem .value-scale
+{
+    background: linear-gradient(to right, darkred, red, darkred);
+    border-top: 0.25em solid darkred;
+    border-top-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+    bottom: 0;
+    position: absolute;
+    width: 1.5em;
+}
+.thermometer .title
+{
+    color: whitesmoke;
+    font-family: sans-serif;
+    font-size: 2em;
+    font-weight: bolder;
+    padding-bottom: 0.75em;
+    text-shadow: 0 0 0.25em black;
+}
+@media print
+{
+    .thermometer { box-shadow: none; }
+    .thermometer .bulb { box-shadow: none; }
+    .thermometer .stem { box-shadow: none; }
+    .thermometer .stem .tick { background-color: black; box-shadow: none; }
+    .thermometer .stem .tick .tick-label { color: black; text-shadow: none; }
+    .thermometer .stem .value-label { color: black; text-shadow: none; }
+    .thermometer .title { color: black; text-shadow: none; }
+}
+</style>
+
+</head>
+<body>
+
+<p>CSS3 can make text elements look like graphics.</p>
+
+<!-- Define the thermometer structure -->
+<!-- Copyright (c) 2023 TigerPointe Software, LLC -->
+<div class="thermometer">
+    <div class="title">THERMOMETER</div>
+    <div class="stem">
+        <div class="tick tick-75"><div class="tick-label">75</div></div>
+        <div class="tick tick-50"><div class="tick-label">50</div></div>
+        <div class="tick tick-25"><div class="tick-label">25</div></div>
+        <div class="tick tick-00"><div class="tick-label">&nbsp;0</div></div>
+        <!-- percentage values below control the thermometer display -->
+        <div id="scale" class="value-scale" style="height: 50%;"></div>
+        <div id="label" class="value-label" style="bottom: 50%;">50&deg;</div>
+    </div>
+    <div class="bulb"></div>
+</div>
+
+<!-- Define the interactive features -->
+<script type="text/javascript">
+function setvalue(value)
+// Sets the thermometer value
+{
+    let scale = document.getElementById("scale");
+    let label = document.getElementById("label");
+    if      (value < 0)   { value = 0;   }
+    else if (value > 100) { value = 100; }
+    scale.style.height = value + "%";
+    label.style.bottom = value + "%";
+    if (value == 0)
+    {
+        label.innerHTML = "&nbsp;";
+        return;
+    }
+    label.innerHTML = value + "&deg;";
+}
+</script>
+
+<!-- Define the control panel -->
+<div>
+    <div class="control-panel">
+        <div class="title">Choose from the following options:</div>
+        <a href="javascript:void(0);"
+            onclick="setvalue(0);">Clear the value</a>
+        <a href="javascript:void(0);"
+            onclick="setvalue(25);">Set the value to 25&deg;</a>
+        <a href="javascript:void(0);"
+            onclick="setvalue(50);">Set the value to 50&deg;</a>
+        <a href="javascript:void(0);"
+            onclick="setvalue(75);">Set the value to 75&deg;</a>
+        <a href="javascript:void(0);"
+            onclick="setvalue(100);">Set the value to 100&deg;</a>
+    </div>
+</div>
+
+</body>
+</html>
