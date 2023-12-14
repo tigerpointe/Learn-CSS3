@@ -5,6 +5,7 @@ A CSS3 demo that displays an analog clock (without using images).
 https://github.com/tigerpointe
 History:
 01.00 2023-Dec-10 Scott S. Initial release.
+01.01 2023-Dec-14 Scott S. Added inner pin, optimized code.
 
 MIT License
 
@@ -40,7 +41,7 @@ https://www.cancer.org/
 
 <!-- Page Styles (not related to the analog clock) -->
 <style type="text/css">
-/* viewport units adjust elements for various display resolutions */
+/* viewport units adjust screen elements for various display resolutions */
 body
 {
     background-color: whitesmoke;
@@ -54,8 +55,8 @@ body
 <!-- Analog Clock Styles -->
 <!-- Copyright (c) 2023 TigerPointe Software, LLC -->
 <style type="text/css">
-.clock-face
 /* clock face uses a border radius to create the circle, height = width */
+.clock-face
 {
     background-color: ghostwhite;
     border: 0.15em solid darkslategray;
@@ -151,7 +152,21 @@ body
     top: 0.5em;
     width: 9em;
 }
-/* clock hands will be rotated using JavaScript */
+/* inner pin is the tiny topmost circle covering the centers of the hands,
+     height + top < clock-face height,
+     top = 1/2 (clock-face height - height),
+     height = width, left = top */
+.clock-face .inner-pin
+{
+    background-color: darkslategray;
+    border-radius: 50%;
+    height: 0.4em;
+    left: 4.8em;
+    position: absolute;
+    top: 4.8em;
+    width: 0.4em;
+}
+/* clock hands will be rotated programmatically using JavaScript */
 .clock-face .clock-hand
 {
     border-radius: 25%;
@@ -208,6 +223,7 @@ body
     <div id="hour-hand"   class="clock-hand"></div>
     <div id="minute-hand" class="clock-hand"></div>
     <div id="second-hand" class="clock-hand"></div>
+    <div class="inner-pin"></div>
 </div>
 
 <script type="text/javascript">
@@ -225,12 +241,12 @@ body
         let min = (360 / 60) * now.getMinutes(); // 60 minutes
         let hrs = (360 / 12) * now.getHours();   // 12 hours
         let off = (360 / 12) * (min / 360);      // extra offset
-        document.getElementById("hour-hand").style.transform =
-            `rotate(${hrs + off}deg)`;
         document.getElementById("second-hand").style.transform =
             `rotate(${sec}deg)`;
         document.getElementById("minute-hand").style.transform =
             `rotate(${min}deg)`;
+        document.getElementById("hour-hand").style.transform =
+            `rotate(${hrs + off}deg)`;
         
         // wait until the next second change before updating
         setTimeout(function() { update(); }, 1000 - now.getMilliseconds());
