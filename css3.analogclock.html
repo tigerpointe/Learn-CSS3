@@ -152,7 +152,7 @@ body
     top: 0.5em;
     width: 9em;
 }
-/* inner pin is the tiny topmost circle covering the centers of the hands,
+/* inner pin is the tiny topmost circle covering the center of the hands,
      height + top < clock-face height,
      top = 1/2 (clock-face height - height),
      height = width, left = top */
@@ -194,7 +194,7 @@ body
 .clock-face #second-hand
 {
     background-color: crimson;
-    height: 4.5em; 
+    height: 4.5em;
     top: 0.5em;
 }
 </style>
@@ -247,7 +247,7 @@ body
             `rotate(${min}deg)`;
         document.getElementById("hour-hand").style.transform =
             `rotate(${hrs + off}deg)`;
-        
+
         // wait until the next second change before updating
         setTimeout(function() { update(); }, 1000 - now.getMilliseconds());
 
