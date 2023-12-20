@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!--
+A CSS3 demo that displays a snowman (without using images).
+
+https://github.com/tigerpointe
+History:
+01.00 2023-Dec-20 Scott S. Initial release.
+
+MIT License
+
+Copyright (c) 2023 TigerPointe Software, LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Please consider giving to cancer research.
+https://braintumor.org/
+https://www.cancer.org/
+-->
+
+<html lang="en">
+<head>
+
+<title>CSS3 Snowman</title>
+<meta charset="utf-8" />
+
+<!-- Page Styles (not related to the snowman) -->
+<style type="text/css">
+/* viewport units adjust screen elements for various display resolutions */
+body
+{
+    background-color: darkred;
+    color: whitesmoke;
+    font-family: cursive;
+    font-size: calc(0.5em + 1.5vh); /* fixed size + viewport height */
+    text-align: center;
+}
+a:link
+{
+    color: whitesmoke;
+    text-decoration: none;
+}
+a:visited
+{
+    color: whitesmoke;
+    text-decoration: none;
+}
+a:focus
+{
+    color:  yellow;
+    text-decoration: underline;
+}
+a:hover
+{
+    color: yellow;
+    text-decoration: underline;
+}
+a:active
+{
+    color: yellow;
+    text-decoration: underline;
+}
+.control-panel
+{
+    font-size: 0.65em;
+}
+.sentiment-text
+{
+    color: gold;
+    font-size: 2em;
+    font-weight: bolder;
+    margin: 0.25em;
+    text-shadow: 0 0 0.25em black;
+}
+</style>
+
+<!-- Snowman Styles -->
+<style type="text/css">
+@keyframes snowfall
+{
+    0%   { top: 0; }
+    100% { top: 10.5em; }
+}
+.snowflake
+{
+    animation-iteration-count: infinite;
+    animation-name: snowfall;
+    animation-timing-function: ease-in;
+    color: skyblue;
+    font-size: 1em;
+    position: absolute;
+    z-index: 5;
+}
+.snowflake-01
+{
+    animation-duration: 7s;
+    left: 0.5em;
+}
+.snowflake-02
+{
+    animation-duration: 5s;
+    left: 2.5em;
+}
+.snowflake-03
+{
+    animation-duration: 9s;
+    left: 4.5em;
+}
+.snowflake-04
+{
+    animation-duration: 4s;
+    left: 6.5em;
+}
+.snowflake-05
+{
+    animation-duration: 6s;
+    left: 8.5em;
+}
+.snowman
+{
+    background-color: forestgreen;
+    border: 0.15em solid lightgreen;
+    border-radius: 0.25em;
+    height: 12em;
+    margin: auto;
+    position: relative;
+    width: 10em;
+}
+.snowman .body
+{
+    background-color: ghostwhite;
+    border: 0.15em solid darkslategray;
+    border-radius: 50%;
+    box-shadow: 0 0 0.25em dimgray inset;
+    height: 6em;
+    left: 2em;
+    position: absolute;
+    top: 5em;
+    width: 6em;
+    z-index: 1;
+}
+.snowman .body .button-bottom
+{
+    background-color: dimgray;
+    border: 0.1em solid darkslategray;
+    border-radius: 50%;
+    height: 0.25em;
+    left: 2.75em;
+    position: absolute;
+    top: 2.5em;
+    width: 0.25em;
+}
+.snowman .body .button-top
+{
+    background-color: dimgray;
+    border: 0.1em solid darkslategray;
+    border-radius: 50%;
+    height: 0.25em;
+    left: 2.75em;
+    position: absolute;
+    top: 1.5em;
+    width: 0.25em;
+}
+.snowman .head
+{
+    background-color: ghostwhite;
+    border: 0.15em solid darkslategray;
+    border-radius: 50%;
+    box-shadow: 0 0 0.15em dimgray inset;
+    height: 3em;
+    left: 3.5em;
+    position: absolute;
+    top: 2.5em;
+    width: 3em;
+    z-index: 2;
+}
+.snowman .head .button-nose
+{
+    background-color: darkorange;
+    border: 0.1em solid darkslategray;
+    border-radius: 50%;
+    height: 0.25em;
+    left: 1.25em;
+    position: absolute;
+    top: 1.25em;
+    width: 0.25em;
+}
+.snowman .head .eye-left
+{
+    background-color: dimgray;
+    border: 0.1em solid darkslategray;
+    border-radius: 50%;
+    height: 0.25em;
+    left: 0.75em;
+    position: absolute;
+    top: 0.75em;
+    width: 0.25em;
+}
+.snowman .head .eye-right
+{
+    background-color: dimgray;
+    border: 0.1em solid darkslategray;
+    border-radius: 50%;
+    height: 0.25em;
+    left: 1.75em;
+    position: absolute;
+    top: 0.75em;
+    width: 0.25em;
+}
+.snowman .head .mouth-left
+{
+    background-color: dimgray;
+    border: 0.1em solid darkslategray;
+    border-radius: 50%;
+    height: 0.25em;
+    left: 0.7em;
+    position: absolute;
+    top: 1.75em;
+    width: 0.25em;
+}
+.snowman .head .mouth-middle
+{
+    background-color: dimgray;
+    border: 0.1em solid darkslategray;
+    border-radius: 50%;
+    height: 0.25em;
+    left: 1.25em;
+    position: absolute;
+    top: 1.95em;
+    width: 0.25em;
+}
+.snowman .head .mouth-right
+{
+    background-color: dimgray;
+    border: 0.1em solid darkslategray;
+    border-radius: 50%;
+    height: 0.25em;
+    left: 1.8em;
+    position: absolute;
+    top: 1.75em;
+    width: 0.25em;
+}
+.snowman .top-hat
+{
+    background-color: darkslategray;
+    border: 0.125em solid black;
+    border-radius: 0.25em;
+    box-shadow: 0 0 0.25em black inset;
+    height: 1em;
+    left: 4em;
+    position: absolute;
+    top: 1.25em;
+    width: 2em;
+    z-index: 3;
+}
+.snowman .top-hat-band
+{
+    background-color: red;
+    border: 0.125em solid black;
+    box-shadow: 0 0 0.25em black inset;
+    height: 0.5em;
+    left: 4em;
+    position: absolute;
+    top: 1.9em;
+    width: 2em;
+    z-index: 4;
+}
+.snowman .top-hat-brim
+{
+    background-color: darkslategray;
+    border: 0.125em solid black;
+    border-radius: 0.25em;
+    box-shadow: 0 0 0.25em black inset;
+    height: 0.5em;
+    left: 3.5em;
+    position: absolute;
+    top: 2.5em;
+    width: 3em;
+    z-index: 3;
+}
+</style>
+
+</head>
+<body>
+
+<div class="sentiment-text">HAVE A VERY</div>
+<div class="snowman">
+    <div class="top-hat"></div>
+    <div class="top-hat-band"></div>
+    <div class="top-hat-brim"></div>
+    <div class="head">
+        <div class="eye-left"></div>
+        <div class="eye-right"></div>
+        <div class="button-nose"></div>
+        <div class="mouth-left"></div>
+        <div class="mouth-middle"></div>
+        <div class="mouth-right"></div>
+    </div>
+    <div class="body">
+        <div class="button-top"></div>
+        <div class="button-bottom"></div>
+    </div>
+    <div class="snowflake snowflake-01">&#10052;</div>
+    <div class="snowflake snowflake-02">&#10052;</div>
+    <div class="snowflake snowflake-03">&#10052;</div>
+    <div class="snowflake snowflake-04">&#10052;</div>
+    <div class="snowflake snowflake-05">&#10052;</div>
+</div>
+<div class="sentiment-text">MERRY CHRISTMAS</div>
+<div class="control-panel">
+    <p>This holiday season, please remember:</p>
+    <a target="_blank" href="https://www.cancer.org/"
+        >American Cancer Society</a>
+    |
+    <a target="_blank" href="https://braintumor.org/"
+        >National Brain Tumor Society</a>
+</div>
+
+</body>
+</html>
