@@ -5,6 +5,7 @@ A CSS3 demo that displays a snowman (without using images).
 https://github.com/tigerpointe
 History:
 01.00 2023-Dec-20 Scott S. Initial release.
+01.01 2023-Dec-21 Scott S. Add snowflake overflow, Windows Segoe Script font.
 
 MIT License
 
@@ -46,7 +47,7 @@ body
 {
     background-color: darkred;
     color: whitesmoke;
-    font-family: cursive;
+    font-family: 'Segoe Script', cursive;
     font-size: calc(0.75em + 2vh); /* fixed size + viewport height */
     padding: 0.5em 0 0.5em 0;
     text-align: center;
@@ -99,8 +100,8 @@ a:active
 <style type="text/css">
 @keyframes snowfall
 {
-    0%   { top: 0; }
-    100% { top: 10.5em; }
+    0%   { top: -1.25em; }
+    100% { top: 12em; }
 }
 .snowflake
 {
@@ -144,6 +145,7 @@ a:active
     border-radius: 0.25em;
     height: 12em;
     margin: auto;
+    overflow: hidden;
     position: relative;
     width: 10em;
 }
