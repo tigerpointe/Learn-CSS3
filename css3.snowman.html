@@ -6,6 +6,7 @@ https://github.com/tigerpointe
 History:
 01.00 2023-Dec-20 Scott S. Initial release.
 01.01 2023-Dec-21 Scott S. Add snowflake overflow, Windows Segoe Script font.
+01.02 2023-Dec-23 Scott S. Add wave-left, wave-right keyframes.
 
 MIT License
 
@@ -103,6 +104,16 @@ a:active
     0%   { top: -1.25em; }
     100% { top: 12em; }
 }
+@keyframes wave-left
+{
+    0%   { transform: rotate(270deg); }
+    100% { transform: rotate(330deg); }
+}
+@keyframes wave-right
+{
+    0%   { transform: rotate(30deg); }
+    100% { transform: rotate(90deg); }
+}
 .snowflake
 {
     animation-iteration-count: infinite;
@@ -111,6 +122,7 @@ a:active
     color: skyblue;
     font-size: 1em;
     position: absolute;
+    top: -1.25em;
     z-index: 5;
 }
 .snowflake-01
@@ -265,6 +277,11 @@ a:active
 }
 .snowman .stick-arm-left
 {
+    animation-direction: alternate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-name: wave-left;
+    animation-timing-function: ease-in-out;
     background-color: tan;
     border: 0.1em solid darkslategray;
     border-radius: 0.25em;
@@ -280,6 +297,11 @@ a:active
 }
 .snowman .stick-arm-right
 {
+    animation-direction: alternate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-name: wave-right;
+    animation-timing-function: ease-in-out;
     background-color: tan;
     border: 0.1em solid darkslategray;
     border-radius: 0.25em;
@@ -337,6 +359,7 @@ a:active
 <body>
 
 <div class="sentiment-text">HAVE A VERY</div>
+
 <div class="snowman">
     <div class="top-hat"></div>
     <div class="top-hat-band"></div>
@@ -362,7 +385,9 @@ a:active
     <div class="snowflake snowflake-04">&#10052;</div>
     <div class="snowflake snowflake-05">&#10052;</div>
 </div>
+
 <div class="sentiment-text">MERRY CHRISTMAS</div>
+
 <div class="control-panel">
     <div>This holiday season, please remember:</div>
     <a target="_blank" href="https://www.cancer.org/"
