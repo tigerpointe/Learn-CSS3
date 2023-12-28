@@ -36,7 +36,7 @@ https://www.cancer.org/
 <html lang="en">
 <head>
 
-<title>CSS3 Snowman</title>
+<title>CSS3 Cat Clock</title>
 <meta charset="utf-8" />
 
 <!-- Page Styles (not related to the snowman) -->
@@ -116,6 +116,18 @@ a:active
     top: 7em;
     width: 6em;
     z-index: 2;
+}
+.cat .body .clock
+{
+    background-color: white;
+    border: 0.1em solid black;
+    box-shadow: 0 0 0.25em black inset;
+    border-radius: 50%;
+    height: 5.25em;
+    left: 0.25em;
+    position: absolute;
+    top: 1.25em;
+    width: 5.25em;
 }
 .cat .ear-left
 {
@@ -328,7 +340,9 @@ a:active
         <div class="muzzle"></div>
         <div class="nose"></div>
     </div>
-    <div class="body"></div>
+    <div class="body">
+        <div class="clock"></div>
+    </div>
     <div class="paw-top-left">&quot;&quot;</div>
     <div class="paw-top-right">&quot;&quot;</div>
     <div class="paw-bottom-left">&quot;&quot;</div>
