@@ -270,7 +270,7 @@ a:active
     position: absolute;
     top: 13.5em;
     width: 2em;
-    z-index: 23;
+    z-index: 2;
 }
 .cat .paw-bottom-right
 {
@@ -284,7 +284,7 @@ a:active
     position: absolute;
     top: 13.5em;
     width: 2em;
-    z-index: 23;
+    z-index: 2;
 }
 .cat .paw-top-left
 {
@@ -298,7 +298,7 @@ a:active
     position: absolute;
     top: 7.5em;
     width: 2em;
-    z-index: 23;
+    z-index: 2;
 }
 .cat .paw-top-right
 {
@@ -312,7 +312,7 @@ a:active
     position: absolute;
     top: 7.5em;
     width: 2em;
-    z-index: 23;
+    z-index: 2;
 }
 .cat .tail
 {
@@ -333,6 +333,45 @@ a:active
     transform: rotate(0deg);
     width: 1em;
     z-index: 1;
+}
+.cat .tie-left
+{
+    background-color: crimson;
+    border: 0.15em solid maroon;
+    border-radius: 0 50% 50% 0;
+    box-shadow: 0 0 0.5em maroon inset;
+    height: 0.75em;
+    left: 3.5em;
+    position: absolute;
+    top: 6.5em;
+    width: 1em;
+    z-index: 3;
+}
+.cat .tie-middle
+{
+    background-color: crimson;
+    border: 0.15em solid maroon;
+    border-radius: 50%;
+    box-shadow: 0 0 0.5em maroon inset;
+    height: 0.75em;
+    left: 4.5em;
+    position: absolute;
+    top: 6.5em;
+    width: 1em;
+    z-index: 4;
+}
+.cat .tie-right
+{
+    background-color: crimson;
+    border: 0.15em solid maroon;
+    border-radius: 50% 0 0 50%;
+    box-shadow: 0 0 0.5em maroon inset;
+    height: 0.75em;
+    left: 5.5em;
+    position: absolute;
+    top: 6.5em;
+    width: 1em;
+    z-index: 3;
 }
 </style>
 
@@ -357,6 +396,9 @@ a:active
     <div class="body">
         <div class="clock"></div>
     </div>
+    <div class="tie-left"></div>
+    <div class="tie-middle"></div>
+    <div class="tie-right"></div>
     <div class="paw-top-left">&quot;&quot;</div>
     <div class="paw-top-right">&quot;&quot;</div>
     <div class="paw-bottom-left">&quot;&quot;</div>
