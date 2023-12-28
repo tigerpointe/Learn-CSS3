@@ -91,7 +91,7 @@ a:active
 @keyframes swing-tail
 {
     0%   { transform: rotate(-30deg); }
-    100% { transform: rotate(30deg); }
+    100% { transform: rotate(30deg);  }
 }
 .cat
 {
@@ -109,7 +109,7 @@ a:active
 {
     background-color: black;
     border: 0.15em solid black;
-    border-radius: 15% 15% 5% 5%;
+    border-radius: 25% 25% 5% 5%;
     box-shadow: 0 0 0.75em white inset;
     height: 8em;
     left: 2em;
@@ -153,7 +153,7 @@ a:active
 {
     left: 50%;
     position: absolute;
-    transform: rotate(0deg); 
+    transform: rotate(0deg);
     transform-origin: bottom;
 }
 .cat .body .clock #hour-hand
@@ -240,7 +240,7 @@ a:active
     background-color: white;
     border: 0.1em solid black;
     border-radius: 50%;
-    box-shadow: 0 0 0.75em black inset;
+    box-shadow: 0 0 0.5em black inset;
     height: 2.5em;
     left: 0.25em;
     position: absolute;
@@ -255,20 +255,20 @@ a:active
     animation-name: move-pupil;
     animation-timing-function: ease-in-out;
     background-color: black;
-    border: 0.1em solid black;
+    border: 0.15em solid black;
     border-radius: 50%;
     height: 1.5em;
     left: 1em;
     position: absolute;
     top: 0.5em;
-    width: 0.5em;
+    width: 0.375em;
 }
 .cat .head .eye-right
 {
     background-color: white;
     border: 0.1em solid black;
     border-radius: 50%;
-    box-shadow: 0 0 0.75em black inset;
+    box-shadow: 0 0 0.5em black inset;
     height: 2.5em;
     left: 3.25em;
     position: absolute;
@@ -283,20 +283,20 @@ a:active
     animation-name: move-pupil;
     animation-timing-function: ease-in-out;
     background-color: black;
-    border: 0.1em solid black;
+    border: 0.15em solid black;
     border-radius: 50%;
     height: 1.5em;
     left: 1em;
     position: absolute;
     top: 0.5em;
-    width: 0.5em;
+    width: 0.375em;
 }
 .cat .head .muzzle
 {
     background-color: white;
     border: 0.1em solid black;
     border-radius: 5% 5% 50% 50%;
-    box-shadow: 0 0 0.75em black inset;
+    box-shadow: 0 0 0.5em black inset;
     height: 1.75em;
     left: 1em;
     position: absolute;
@@ -339,7 +339,7 @@ a:active
     width: 2em;
 }
 .cat .paw-bottom-left
-{ 
+{
     left: 2.5em;
     top: 13.5em;
 }
@@ -350,13 +350,17 @@ a:active
 }
 .cat .paw-top-left
 {
-    left: 2.5em;
-    top: 7.5em;
+    left: 2.25em;
+    top: 7.375em;
+    transform: rotate(-25deg);
+    transform-origin: top right;
 }
 .cat .paw-top-right
 {
-    left: 5.5em;
-    top: 7.5em;
+    left: 5.75em;
+    top: 7.375em;
+    transform: rotate(25deg);
+    transform-origin: top left;
 }
 .cat .tail
 {
@@ -367,7 +371,7 @@ a:active
     animation-timing-function: ease-in-out;
     background-color: black;
     border: 0.15em solid black;
-    border-radius: 25% 25% 50% 50%;;
+    border-radius: 25% 25% 50% 50%;
     box-shadow: 0 0 0.5em white inset;
     height: 9em;
     left: 4.5em;
@@ -466,15 +470,16 @@ a:active
 <div class="copyright-notice"
     ><a href="https://github.com/tigerpointe/Learn-CSS3" target="_blank"
     >Copyright &copy; 2024 TigerPointe Software, LLC</a></div>
+
 <script type="text/javascript">
     (function () {
         function update()
         // updates the clock with the current time
         {
-    
+
             // get the current date and time
             let now = new Date();
-    
+
             // calculate the rotations based on a circle of 360-degrees; add an
             //  extra offset to the hour-hand rotation based on the minutes
             let sec = (360 / 60) * now.getSeconds(); // 60 seconds
@@ -487,10 +492,10 @@ a:active
                 `rotate(${min}deg)`;
             document.getElementById("hour-hand").style.transform =
                 `rotate(${hrs + off}deg)`;
-    
+
             // wait until the next second change before updating
             setTimeout(function() { update(); }, 1000 - now.getMilliseconds());
-    
+
         }
         update(); /* starts the update loop */
     })();
