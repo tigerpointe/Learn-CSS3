@@ -2,7 +2,7 @@
 ## Copyright (c) 2023 TigerPointe Software, LLC
 
 ## Description
-Implements a set of CSS3 learning samples.
+Implements a set of CSS3 learning samples.  Click on the links below to see working instances.
 
 * [CSS3 Analog Clock](https://tigerpointe.github.io/Learn-CSS3/css3.analogclock.html) - displays an analog clock with no images
 * [CSS3 Cat Clock](https://tigerpointe.github.io/Learn-CSS3/css3.catclock.html) - displays an art deco novelty cat clock with no images
