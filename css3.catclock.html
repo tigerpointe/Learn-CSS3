@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!--
+A CSS3 demo that displays a cat clock (without using images).
+
+https://github.com/tigerpointe
+History:
+01.00 2024-Jan-01 Scott S. Initial release.
+
+MIT License
+
+Copyright (c) 2023 TigerPointe Software, LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Please consider giving to cancer research.
+https://braintumor.org/
+https://www.cancer.org/
+-->
+
+<html lang="en">
+<head>
+
+<title>CSS3 Snowman</title>
+<meta charset="utf-8" />
+
+<!-- Page Styles (not related to the snowman) -->
+<style type="text/css">
+body
+{
+    background-color: whitesmoke;
+    color: darkslategray;
+    font-family: sans-serif;
+    font-size: calc(0.75em + 2vh); /* fixed size + viewport height */
+    padding: 0.5em 0 0.5em 0;
+    text-align: center;
+}
+a:link
+{
+    color: mediumblue;
+    text-decoration: none;
+}
+a:visited
+{
+    color: mediumblue;
+    text-decoration: none;
+}
+a:focus
+{
+    color: royalblue;
+    text-decoration: underline;
+}
+a:hover
+{
+    color: royalblue;
+    text-decoration: underline;
+}
+a:active
+{
+    color: royalblue;
+    text-decoration: underline;
+}
+</style>
+
+<!-- Cat Clock Styles -->
+<style type="text/css">
+@keyframes move-pupil-left
+{
+    0%   { left: 0.5em; }
+    100% { left: 1.5em; }
+}
+@keyframes move-pupil-right
+{
+    0%   { left: 0.5rm; }
+    100% { left: 1.5em; }
+}
+@keyframes wave-tail
+{
+    0%   { transform: rotate(-30deg); }
+    100% { transform: rotate(30deg); }
+}
+.cat
+{
+    border: 0.075em solid lightgray;
+    font-family: sans-serif;
+    height: 24em;
+    margin: auto;
+    position: relative;
+    width: 10em;
+}
+.cat .body
+{
+    background-color: black;
+    border: 0.15em solid dimgray;
+    border-radius: 15% 15% 5% 5%;
+    box-shadow: 0 0 0.75em white inset;
+    height: 7em;
+    left: 2em;
+    position: absolute;
+    top: 7em;
+    width: 6em;
+    z-index: 2;
+}
+.cat .ear-left
+{
+    background-color: black;
+    border: 0.15em solid dimgray;
+    border-radius: 0 50% 0 0;
+    box-shadow: 0 0 0.5em white inset;
+    height: 2em;
+    left: 2.5em;
+    position: absolute;
+    top: 0.25em;
+    width: 1em;
+    z-index: 2;
+}
+.cat .ear-right
+{
+    background-color: black;
+    border: 0.15em solid dimgray;
+    border-radius: 50% 0 0 0;
+    box-shadow: 0 0 0.5em white inset;
+    height: 2em;
+    left: 6.5em;
+    position: absolute;
+    top: 0.25em;
+    width: 1em;
+    z-index: 2;
+}
+.cat .head
+{
+    background-color: black;
+    border: 0.15em solid dimgray;
+    border-radius: 25% 25% 50% 50%;
+    box-shadow: 0 0 0.75em white inset;
+    height: 6em;
+    left: 2em;
+    position: absolute;
+    top: 1em;
+    width: 6em;
+    z-index: 3;
+}
+.cat .head .eye-left
+{
+    background-color: white;
+    border: 0.1em solid black;
+    box-shadow: 0 0 0.75em black inset;
+    border-radius: 50%;
+    height: 2.5em;
+    left: 0.25em;
+    position: absolute;
+    top: 0.75em;
+    width: 2.5em;
+}
+.cat .head .eye-left .pupil-left
+{
+    animation-direction: alternate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-name: move-pupil-left;
+    animation-timing-function: ease-in-out;
+    background-color: black;
+    border-radius: 50%;
+    height: 1.5em;
+    left: 1em;
+    position: absolute;
+    top: 0.5em;
+    width: 0.5em;
+}
+.cat .head .eye-right
+{
+    background-color: white;
+    border: 0.1em solid black;
+    box-shadow: 0 0 0.75em black inset;
+    border-radius: 50%;
+    height: 2.5em;
+    left: 3.25em;
+    position: absolute;
+    top: 0.75em;
+    width: 2.5em;
+}
+.cat .head .eye-right .pupil-right
+{
+    animation-direction: alternate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-name: move-pupil-right;
+    animation-timing-function: ease-in-out;
+    background-color: black;
+    border-radius: 50%;
+    height: 1.5em;
+    left: 1em;
+    position: absolute;
+    top: 0.5em;
+    width: 0.5em;
+}
+.cat .head .muzzle
+{
+    background-color: white;
+    border: 0.1em solid black;
+    box-shadow: 0 0 0.75em black inset;
+    border-radius: 0 0 50% 50%;
+    height: 1.75em;
+    left: 1em;
+    position: absolute;
+    top: 3.5em;
+    width: 4em;
+}
+.cat .head .nose
+{
+    background-color: black;
+    border: 0.1em solid black;
+    box-shadow: 0 0 0.5em darkslategray inset;
+    border-radius: 50%;
+    height: 1em;
+    left: 2.5em;
+    position: absolute;
+    top: 2.75em;
+    width: 1em;
+}
+.cat .paw-bottom-left
+{
+    background-color: black;
+    border: 0.05em solid dimgray;
+    border-radius: 50% 50% 0 0;
+    box-shadow: 0 0 0.5em white inset;
+    color: lightgray;
+    height: 1em;
+    left: 2.5em;
+    position: absolute;
+    top: 12.5em;
+    width: 2em;
+    z-index: 23;
+}
+.cat .paw-bottom-right
+{
+    background-color: black;
+    border: 0.05em solid dimgray;
+    border-radius: 50% 50% 0 0;
+    box-shadow: 0 0 0.5em white inset;
+    color: lightgray;
+    height: 1em;
+    left: 5.5em;
+    position: absolute;
+    top: 12.5em;
+    width: 2em;
+    z-index: 23;
+}
+.cat .paw-top-left
+{
+    background-color: black;
+    border: 0.05em solid dimgray;
+    border-radius: 50% 50% 0 0;
+    box-shadow: 0 0 0.5em white inset;
+    color: lightgray;
+    height: 1em;
+    left: 2.5em;
+    position: absolute;
+    top: 7.5em;
+    width: 2em;
+    z-index: 23;
+}
+.cat .paw-top-right
+{
+    background-color: black;
+    border: 0.05em solid dimgray;
+    border-radius: 50% 50% 0 0;
+    box-shadow: 0 0 0.5em white inset;
+    color: lightgray;
+    height: 1em;
+    left: 5.5em;
+    position: absolute;
+    top: 7.5em;
+    width: 2em;
+    z-index: 23;
+}
+.cat .tail
+{
+    animation-direction: alternate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-name: wave-tail;
+    animation-timing-function: ease-in-out;
+    background-color: black;
+    border: 0.15em solid dimgray;
+    border-radius: 25% 25% 50% 50%;;
+    box-shadow: 0 0 0.5em white inset;
+    height: 8em;
+    left: 4.5em;
+    position: absolute;
+    top: 14em;
+    transform-origin: top;
+    transform: rotate(0deg);
+    width: 1em;
+    z-index: 1;
+}
+</style>
+
+</head>
+<body>
+
+<div class="cat">
+    <div class="ear-left"></div>
+    <div class="ear-right"></div>
+    <div class="head">
+        <div class="eye-left">
+            <div class="pupil-left"></div>
+        </div>
+        <div class="eye-right">
+            <div class="pupil-right"></div>
+        </div>
+        <div class="muzzle"></div>
+        <div class="nose"></div>
+    </div>
+    <div class="body"></div>
+    <div class="paw-top-left">&quot;&quot;</div>
+    <div class="paw-top-right">&quot;&quot;</div>
+    <div class="paw-bottom-left">&quot;&quot;</div>
+    <div class="paw-bottom-right">&quot;&quot;</div>
+    <div class="tail"></div>
+</div>
+
+</body>
+</html>
