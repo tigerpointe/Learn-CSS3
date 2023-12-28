@@ -96,7 +96,7 @@ a:active
 }
 .cat
 {
-    border: 0.075em solid lightgray;
+    border: 0.075em solid dimgray;
     border-radius: 0.25em;
     font-family: sans-serif;
     height: 24em;
@@ -107,7 +107,7 @@ a:active
 .cat .body
 {
     background-color: black;
-    border: 0.15em solid dimgray;
+    border: 0.15em solid black;
     border-radius: 15% 15% 5% 5%;
     box-shadow: 0 0 0.75em white inset;
     height: 8em;
@@ -132,7 +132,7 @@ a:active
 .cat .ear-left
 {
     background-color: black;
-    border: 0.15em solid dimgray;
+    border: 0.15em solid black;
     border-radius: 0 50% 0 0;
     box-shadow: 0 0 0.5em white inset;
     height: 2em;
@@ -145,7 +145,7 @@ a:active
 .cat .ear-right
 {
     background-color: black;
-    border: 0.15em solid dimgray;
+    border: 0.15em solid black;
     border-radius: 50% 0 0 0;
     box-shadow: 0 0 0.5em white inset;
     height: 2em;
@@ -158,7 +158,7 @@ a:active
 .cat .head
 {
     background-color: black;
-    border: 0.15em solid dimgray;
+    border: 0.15em solid black;
     border-radius: 25% 25% 50% 50%;
     box-shadow: 0 0 0.75em white inset;
     height: 6em;
@@ -234,9 +234,21 @@ a:active
     top: 3.5em;
     width: 4em;
 }
+.cat .head .muzzle .mouth
+{
+    border-bottom: 0.25em solid black;
+    border-left: 0.15em solid black;
+    border-right: 0.15em solid black;
+    border-radius: 0 0 1em 1em;
+    height: 0.5em;
+    left: 1.25em;
+    position: absolute;
+    top: 0.5em;
+    width: 1.25em;
+}
 .cat .head .nose
 {
-    background-color: black;
+    background: radial-gradient(circle, gray, black);
     border: 0.1em solid black;
     box-shadow: 0 0 0.5em darkslategray inset;
     border-radius: 50%;
@@ -310,7 +322,7 @@ a:active
     animation-name: wave-tail;
     animation-timing-function: ease-in-out;
     background-color: black;
-    border: 0.15em solid dimgray;
+    border: 0.15em solid black;
     border-radius: 25% 25% 50% 50%;;
     box-shadow: 0 0 0.5em white inset;
     height: 9em;
@@ -337,7 +349,9 @@ a:active
         <div class="eye-right">
             <div class="pupil-right"></div>
         </div>
-        <div class="muzzle"></div>
+        <div class="muzzle">
+            <div class="mouth"></div>
+        </div>
         <div class="nose"></div>
     </div>
     <div class="body">
