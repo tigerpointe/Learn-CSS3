@@ -39,12 +39,12 @@ https://www.cancer.org/
 <title>CSS3 Cat Clock</title>
 <meta charset="utf-8" />
 
-<!-- Page Styles (not related to the snowman) -->
+<!-- Page Styles (not related to the cat clock) -->
 <style type="text/css">
 body
 {
-    background-color: whitesmoke;
-    color: darkslategray;
+    background-color: white;
+    color: black;
     font-family: sans-serif;
     font-size: calc(0.75em + 2vh); /* fixed size + viewport height */
     padding: 0.5em 0 0.5em 0;
@@ -79,24 +79,19 @@ a:active
 
 <!-- Cat Clock Styles -->
 <style type="text/css">
-@keyframes move-pupil-left
+@keyframes move-pupil
 {
     0%   { left: 0.5em; }
     100% { left: 1.5em; }
 }
-@keyframes move-pupil-right
-{
-    0%   { left: 0.5em; }
-    100% { left: 1.5em; }
-}
-@keyframes wave-tail
+@keyframes swing-tail
 {
     0%   { transform: rotate(-30deg); }
     100% { transform: rotate(30deg); }
 }
 .cat
 {
-    border: 0.075em solid dimgray;
+    border: 0.075em solid darkgray;
     border-radius: 0.25em;
     font-family: sans-serif;
     height: 24em;
@@ -115,20 +110,89 @@ a:active
     position: absolute;
     top: 7em;
     width: 6em;
-    z-index: 2;
 }
 .cat .body .clock
 {
     background-color: white;
     border: 0.1em solid black;
-    box-shadow: 0 0 0.25em black inset;
     border-radius: 50%;
+    box-shadow: 0 0 0.25em black inset;
     height: 5.25em;
     left: 0.25em;
     position: absolute;
     top: 1.25em;
     width: 5.25em;
 }
+.cat .body .clock .center-cover
+{
+    background-color: white;
+    border-radius: 50%;
+    height: 4.5em;
+    left: 0.375em;
+    position: absolute;
+    top: 0.375em;
+    width: 4.5em;
+}
+.cat .body .clock .center-pin
+{
+    background-color: black;
+    border-radius: 50%;
+    height: 0.25em;
+    left: 2.5em;
+    position: absolute;
+    top: 2.5em;
+    width: 0.25em;
+}
+.cat .body .clock .hand
+{
+    left: 50%;
+    position: absolute;
+    transform: rotate(0deg); 
+    transform-origin: bottom;
+}
+.cat .body .clock #hour-hand
+{
+    background-color: black;
+    height: 1.5em;
+    top: 1.125em;
+    width: 0.075em;
+}
+.cat .body .clock #minute-hand
+{
+    background-color: black;
+    height: 2.5em;
+    top: 0.125em;
+    width: 0.075em;
+}
+.cat .body .clock #second-hand
+{
+    background-color: crimson;
+    height: 2.5em;
+    top: 0.125em;
+    width: 0.05em;
+}
+.cat .body .clock .tick
+{
+    background-color: black;
+    height: 2.5em;
+    left: 50%;
+    position: absolute;
+    top: 0.125em;
+    transform-origin: bottom;
+    width: 0.1em;
+}
+.cat .body .clock .tick-01-oclock { transform: rotate(30deg);  }
+.cat .body .clock .tick-02-oclock { transform: rotate(60deg);  }
+.cat .body .clock .tick-03-oclock { transform: rotate(90deg);  }
+.cat .body .clock .tick-04-oclock { transform: rotate(120deg); }
+.cat .body .clock .tick-05-oclock { transform: rotate(150deg); }
+.cat .body .clock .tick-06-oclock { transform: rotate(180deg); }
+.cat .body .clock .tick-07-oclock { transform: rotate(210deg); }
+.cat .body .clock .tick-08-oclock { transform: rotate(240deg); }
+.cat .body .clock .tick-09-oclock { transform: rotate(270deg); }
+.cat .body .clock .tick-10-oclock { transform: rotate(300deg); }
+.cat .body .clock .tick-11-oclock { transform: rotate(330deg); }
+.cat .body .clock .tick-12-oclock { transform: rotate(0deg);   }
 .cat .ear-left
 {
     background-color: black;
@@ -140,7 +204,6 @@ a:active
     position: absolute;
     top: 0.25em;
     width: 1em;
-    z-index: 2;
 }
 .cat .ear-right
 {
@@ -153,7 +216,6 @@ a:active
     position: absolute;
     top: 0.25em;
     width: 1em;
-    z-index: 2;
 }
 .cat .head
 {
@@ -166,14 +228,13 @@ a:active
     position: absolute;
     top: 1em;
     width: 6em;
-    z-index: 3;
 }
 .cat .head .eye-left
 {
     background-color: white;
     border: 0.1em solid black;
-    box-shadow: 0 0 0.75em black inset;
     border-radius: 50%;
+    box-shadow: 0 0 0.75em black inset;
     height: 2.5em;
     left: 0.25em;
     position: absolute;
@@ -185,9 +246,10 @@ a:active
     animation-direction: alternate;
     animation-duration: 1s;
     animation-iteration-count: infinite;
-    animation-name: move-pupil-left;
+    animation-name: move-pupil;
     animation-timing-function: ease-in-out;
     background-color: black;
+    border: 0.1em solid black;
     border-radius: 50%;
     height: 1.5em;
     left: 1em;
@@ -199,8 +261,8 @@ a:active
 {
     background-color: white;
     border: 0.1em solid black;
-    box-shadow: 0 0 0.75em black inset;
     border-radius: 50%;
+    box-shadow: 0 0 0.75em black inset;
     height: 2.5em;
     left: 3.25em;
     position: absolute;
@@ -212,9 +274,10 @@ a:active
     animation-direction: alternate;
     animation-duration: 1s;
     animation-iteration-count: infinite;
-    animation-name: move-pupil-right;
+    animation-name: move-pupil;
     animation-timing-function: ease-in-out;
     background-color: black;
+    border: 0.1em solid black;
     border-radius: 50%;
     height: 1.5em;
     left: 1em;
@@ -226,8 +289,8 @@ a:active
 {
     background-color: white;
     border: 0.1em solid black;
-    box-shadow: 0 0 0.75em black inset;
     border-radius: 0 0 50% 50%;
+    box-shadow: 0 0 0.75em black inset;
     height: 1.75em;
     left: 1em;
     position: absolute;
@@ -250,15 +313,15 @@ a:active
 {
     background: radial-gradient(circle, gray, black);
     border: 0.1em solid black;
-    box-shadow: 0 0 0.5em darkslategray inset;
     border-radius: 50%;
+    box-shadow: 0 0 0.5em darkslategray inset;
     height: 1em;
     left: 2.5em;
     position: absolute;
     top: 2.75em;
     width: 1em;
 }
-.cat .paw-bottom-left
+.cat .paw
 {
     background-color: black;
     border: 0.05em solid dimgray;
@@ -266,60 +329,35 @@ a:active
     box-shadow: 0 0 0.5em white inset;
     color: lightgray;
     height: 1em;
-    left: 2.5em;
     position: absolute;
-    top: 13.5em;
     width: 2em;
-    z-index: 2;
+}
+.cat .paw-bottom-left
+{ 
+    left: 2.5em;
+    top: 13.5em;
 }
 .cat .paw-bottom-right
 {
-    background-color: black;
-    border: 0.05em solid dimgray;
-    border-radius: 50% 50% 0 0;
-    box-shadow: 0 0 0.5em white inset;
-    color: lightgray;
-    height: 1em;
     left: 5.5em;
-    position: absolute;
     top: 13.5em;
-    width: 2em;
-    z-index: 2;
 }
 .cat .paw-top-left
 {
-    background-color: black;
-    border: 0.05em solid dimgray;
-    border-radius: 50% 50% 0 0;
-    box-shadow: 0 0 0.5em white inset;
-    color: lightgray;
-    height: 1em;
     left: 2.5em;
-    position: absolute;
     top: 7.5em;
-    width: 2em;
-    z-index: 2;
 }
 .cat .paw-top-right
 {
-    background-color: black;
-    border: 0.05em solid dimgray;
-    border-radius: 50% 50% 0 0;
-    box-shadow: 0 0 0.5em white inset;
-    color: lightgray;
-    height: 1em;
     left: 5.5em;
-    position: absolute;
     top: 7.5em;
-    width: 2em;
-    z-index: 2;
 }
 .cat .tail
 {
     animation-direction: alternate;
     animation-duration: 1s;
     animation-iteration-count: infinite;
-    animation-name: wave-tail;
+    animation-name: swing-tail;
     animation-timing-function: ease-in-out;
     background-color: black;
     border: 0.15em solid black;
@@ -329,10 +367,21 @@ a:active
     left: 4.5em;
     position: absolute;
     top: 14.5em;
-    transform-origin: top;
     transform: rotate(0deg);
+    transform-origin: top;
     width: 1em;
-    z-index: 1;
+}
+.cat .tie-knot
+{
+    background-color: crimson;
+    border: 0.15em solid maroon;
+    border-radius: 50%;
+    box-shadow: 0 0 0.5em maroon inset;
+    height: 0.75em;
+    left: 4.5em;
+    position: absolute;
+    top: 6.5em;
+    width: 1em;
 }
 .cat .tie-left
 {
@@ -345,20 +394,6 @@ a:active
     position: absolute;
     top: 6.5em;
     width: 1em;
-    z-index: 3;
-}
-.cat .tie-middle
-{
-    background-color: crimson;
-    border: 0.15em solid maroon;
-    border-radius: 50%;
-    box-shadow: 0 0 0.5em maroon inset;
-    height: 0.75em;
-    left: 4.5em;
-    position: absolute;
-    top: 6.5em;
-    width: 1em;
-    z-index: 4;
 }
 .cat .tie-right
 {
@@ -371,7 +406,6 @@ a:active
     position: absolute;
     top: 6.5em;
     width: 1em;
-    z-index: 3;
 }
 </style>
 
@@ -393,18 +427,66 @@ a:active
         </div>
         <div class="nose"></div>
     </div>
+    <div class="tail"></div>
     <div class="body">
-        <div class="clock"></div>
+        <div class="clock">
+            <div class="tick tick-01-oclock"></div>
+            <div class="tick tick-02-oclock"></div>
+            <div class="tick tick-03-oclock"></div>
+            <div class="tick tick-04-oclock"></div>
+            <div class="tick tick-05-oclock"></div>
+            <div class="tick tick-06-oclock"></div>
+            <div class="tick tick-07-oclock"></div>
+            <div class="tick tick-08-oclock"></div>
+            <div class="tick tick-09-oclock"></div>
+            <div class="tick tick-10-oclock"></div>
+            <div class="tick tick-11-oclock"></div>
+            <div class="tick tick-12-oclock"></div>
+            <div class="center-cover"></div>
+            <div id="hour-hand" class="hand"></div>
+            <div id="minute-hand" class="hand"></div>
+            <div id="second-hand" class="hand"></div>
+            <div class="center-pin"></div>
+        </div>
     </div>
     <div class="tie-left"></div>
-    <div class="tie-middle"></div>
     <div class="tie-right"></div>
-    <div class="paw-top-left">&quot;&quot;</div>
-    <div class="paw-top-right">&quot;&quot;</div>
-    <div class="paw-bottom-left">&quot;&quot;</div>
-    <div class="paw-bottom-right">&quot;&quot;</div>
-    <div class="tail"></div>
+    <div class="tie-knot"></div>
+    <div class="paw paw-top-left">&quot;&quot;</div>
+    <div class="paw paw-top-right">&quot;&quot;</div>
+    <div class="paw paw-bottom-left">&quot;&quot;</div>
+    <div class="paw paw-bottom-right">&quot;&quot;</div>
 </div>
+
+<script type="text/javascript">
+    (function () {
+        function update()
+        // updates the clock with the current time
+        {
+    
+            // get the current date and time
+            let now = new Date();
+    
+            // calculate the rotations based on a circle of 360-degrees; add an
+            //  extra offset to the hour-hand rotation based on the minutes
+            let sec = (360 / 60) * now.getSeconds(); // 60 seconds
+            let min = (360 / 60) * now.getMinutes(); // 60 minutes
+            let hrs = (360 / 12) * now.getHours();   // 12 hours
+            let off = (360 / 12) * (min / 360);      // extra offset
+            document.getElementById("second-hand").style.transform =
+                `rotate(${sec}deg)`;
+            document.getElementById("minute-hand").style.transform =
+                `rotate(${min}deg)`;
+            document.getElementById("hour-hand").style.transform =
+                `rotate(${hrs + off}deg)`;
+    
+            // wait until the next second change before updating
+            setTimeout(function() { update(); }, 1000 - now.getMilliseconds());
+    
+        }
+        update(); /* starts the update loop */
+    })();
+    </script>
 
 </body>
 </html>
