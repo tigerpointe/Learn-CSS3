@@ -83,6 +83,11 @@ a:active
 
 <!-- Cat Clock Styles -->
 <style type="text/css">
+:root
+{
+    --cat-color: black;   /* sets the primary cat color */
+    --tie-color: darkred; /* sets the primary cat color */
+}
 @keyframes move-pupil
 {
     0%   { left: 0.5em; }
@@ -107,8 +112,8 @@ a:active
 }
 .cat .body
 {
-    background-color: black;
-    border: 0.15em solid black;
+    background-color: var(--cat-color);
+    border: 0.15em solid var(--cat-color);
     border-radius: 25% 25% 5% 5%;
     box-shadow: 0 0 0.75em white inset;
     height: 8em;
@@ -120,9 +125,9 @@ a:active
 .cat .body .clock
 {
     background-color: white;
-    border: 0.1em solid black;
+    border: 0.1em solid var(--cat-color);
     border-radius: 50%;
-    box-shadow: 0 0 0.25em black inset;
+    box-shadow: 0 0 0.25em var(--cat-color) inset;
     height: 5.25em;
     left: 0.25em;
     position: absolute;
@@ -148,7 +153,7 @@ a:active
 }
 .cat .body .clock .center-pin
 {
-    background-color: black;
+    background-color: var(--cat-color);
     border-radius: 50%;
     height: 0.25em;
     left: 2.5em;
@@ -165,14 +170,14 @@ a:active
 }
 .cat .body .clock #hour-hand
 {
-    background-color: black;
+    background-color: var(--cat-color);
     height: 1.5em;
     top: 1.125em;
     width: 0.075em;
 }
 .cat .body .clock #minute-hand
 {
-    background-color: black;
+    background-color: var(--cat-color);
     height: 2.5em;
     top: 0.125em;
     width: 0.075em;
@@ -186,7 +191,7 @@ a:active
 }
 .cat .body .clock .tick
 {
-    background-color: black;
+    background-color: var(--cat-color);
     height: 2.5em;
     left: 50%;
     position: absolute;
@@ -208,8 +213,8 @@ a:active
 .cat .body .clock .tick-12-oclock { transform: rotate(0deg);   }
 .cat .ear-left
 {
-    background-color: black;
-    border: 0.15em solid black;
+    background-color: var(--cat-color);
+    border: 0.15em solid var(--cat-color);
     border-radius: 0 50% 0 0;
     box-shadow: 0 0 0.5em white inset;
     height: 2em;
@@ -220,8 +225,8 @@ a:active
 }
 .cat .ear-right
 {
-    background-color: black;
-    border: 0.15em solid black;
+    background-color: var(--cat-color);
+    border: 0.15em solid var(--cat-color);
     border-radius: 50% 0 0 0;
     box-shadow: 0 0 0.5em white inset;
     height: 2em;
@@ -232,8 +237,8 @@ a:active
 }
 .cat .head
 {
-    background-color: black;
-    border: 0.15em solid black;
+    background-color: var(--cat-color);
+    border: 0.15em solid var(--cat-color);
     border-radius: 25% 25% 50% 50%;
     box-shadow: 0 0 0.75em white inset;
     height: 6em;
@@ -245,9 +250,9 @@ a:active
 .cat .head .eye-left
 {
     background-color: white;
-    border: 0.1em solid black;
+    border: 0.1em solid var(--cat-color);
     border-radius: 50%;
-    box-shadow: 0 0 0.5em black inset;
+    box-shadow: 0 0 0.5em var(--cat-color) inset;
     height: 2.5em;
     left: 0.25em;
     position: absolute;
@@ -261,8 +266,8 @@ a:active
     animation-iteration-count: infinite;
     animation-name: move-pupil;
     animation-timing-function: ease-in-out;
-    background-color: black;
-    border: 0.15em solid black;
+    background-color: var(--cat-color);
+    border: 0.15em solid var(--cat-color);
     border-radius: 50%;
     height: 1.5em;
     left: 1em;
@@ -273,9 +278,9 @@ a:active
 .cat .head .eye-right
 {
     background-color: white;
-    border: 0.1em solid black;
+    border: 0.1em solid var(--cat-color);
     border-radius: 50%;
-    box-shadow: 0 0 0.5em black inset;
+    box-shadow: 0 0 0.5em var(--cat-color) inset;
     height: 2.5em;
     left: 3.25em;
     position: absolute;
@@ -289,8 +294,8 @@ a:active
     animation-iteration-count: infinite;
     animation-name: move-pupil;
     animation-timing-function: ease-in-out;
-    background-color: black;
-    border: 0.15em solid black;
+    background-color: var(--cat-color);
+    border: 0.15em solid var(--cat-color);
     border-radius: 50%;
     height: 1.5em;
     left: 1em;
@@ -301,9 +306,9 @@ a:active
 .cat .head .muzzle
 {
     background-color: white;
-    border: 0.1em solid black;
+    border: 0.1em solid var(--cat-color);
     border-radius: 5% 5% 50% 50%;
-    box-shadow: 0 0 0.5em black inset;
+    box-shadow: 0 0 0.5em var(--cat-color) inset;
     height: 1.625em;
     left: 1em;
     position: absolute;
@@ -312,9 +317,9 @@ a:active
 }
 .cat .head .muzzle .mouth
 {
-    border-bottom: 0.25em solid black;
-    border-left: 0.15em solid black;
-    border-right: 0.15em solid black;
+    border-bottom: 0.25em solid var(--cat-color);
+    border-left: 0.15em solid var(--cat-color);
+    border-right: 0.15em solid var(--cat-color);
     border-radius: 0 0 1em 1em;
     height: 0.5em;
     left: 1.25em;
@@ -324,10 +329,10 @@ a:active
 }
 .cat .head .nose
 {
-    background: radial-gradient(circle, gray, black);
-    border: 0.1em solid black;
+    background: radial-gradient(circle, white, var(--cat-color));
+    border: 0.1em solid var(--cat-color);
     border-radius: 50%;
-    box-shadow: 0 0 0.5em black inset;
+    box-shadow: 0 0 0.5em var(--cat-color) inset;
     height: 1em;
     left: 2.5em;
     position: absolute;
@@ -336,8 +341,8 @@ a:active
 }
 .cat .paw
 {
-    background-color: black;
-    border: 0.125em solid black;
+    background-color: var(--cat-color);
+    border: 0.125em solid var(--cat-color);
     border-radius: 50% 50% 5% 5%;
     box-shadow: 0 0 0.5em white inset;
     color: lightgray;
@@ -376,8 +381,8 @@ a:active
     animation-iteration-count: infinite;
     animation-name: swing-tail;
     animation-timing-function: ease-in-out;
-    background-color: black;
-    border: 0.15em solid black;
+    background-color: var(--cat-color);
+    border: 0.15em solid var(--cat-color);
     border-radius: 25% 25% 50% 50%;
     box-shadow: 0 0 0.5em white inset;
     height: 9em;
@@ -390,39 +395,39 @@ a:active
 }
 .cat .tie-knot
 {
-    background-color: crimson;
-    border: 0.15em solid maroon;
+    background-color: white;
+    border: 0.05em solid var(--cat-color);
     border-radius: 50%;
-    box-shadow: 0 0 0.5em maroon inset;
-    height: 0.75em;
+    box-shadow: 0 0 0.75em var(--tie-color) inset;
+    height: 1em;
     left: 4.5em;
     position: absolute;
     top: 6.5em;
-    width: 1em;
+    width: 1.25em;
 }
 .cat .tie-left
 {
-    background-color: crimson;
-    border: 0.15em solid maroon;
+    background-color: white;
+    border: 0.05em solid var(--cat-color);
     border-radius: 0 50% 50% 0;
-    box-shadow: 0 0 0.5em maroon inset;
-    height: 0.75em;
+    box-shadow: 0 0 0.75em var(--tie-color) inset;
+    height: 1em;
     left: 3.5em;
     position: absolute;
     top: 6.5em;
-    width: 1em;
+    width: 1.25em;
 }
 .cat .tie-right
 {
-    background-color: crimson;
-    border: 0.15em solid maroon;
+    background-color: white;
+    border: 0.05em solid var(--cat-color);
     border-radius: 50% 0 0 50%;
-    box-shadow: 0 0 0.5em maroon inset;
-    height: 0.75em;
+    box-shadow: 0 0 0.75em var(--tie-color) inset;
+    height: 1em;
     left: 5.5em;
     position: absolute;
     top: 6.5em;
-    width: 1em;
+    width: 1.25em;
 }
 </style>
 
@@ -460,7 +465,7 @@ a:active
             <div class="tick tick-11-oclock"></div>
             <div class="tick tick-12-oclock"></div>
             <div class="center-cover">
-                <div id="text-label">CAT</div>
+                <div id="text-label">CAT&nbsp;&nbsp;00</div>
             </div>
             <div id="hour-hand" class="hand"></div>
             <div id="minute-hand" class="hand"></div>
@@ -476,7 +481,6 @@ a:active
     <div class="paw paw-bottom-left">&quot;&quot;</div>
     <div class="paw paw-bottom-right">&quot;&quot;</div>
 </div>
-
 <div class="copyright-notice"
     ><a href="https://github.com/tigerpointe/Learn-CSS3" target="_blank"
     >Copyright &copy; 2024 TigerPointe Software, LLC</a></div>
@@ -516,7 +520,13 @@ a:active
             setTimeout(function() { update(); }, 1000 - now.getMilliseconds());
 
         }
-        update(); /* starts the update loop */
+
+        // Set the alternate colors (optional)
+        //document.body.style.setProperty('--cat-color', 'teal');
+        //document.body.style.setProperty('--tie-color', 'gold');
+
+        // Start the main update loop
+        update();
 
     })();
     </script>
