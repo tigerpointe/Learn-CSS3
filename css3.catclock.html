@@ -139,6 +139,13 @@ a:active
     top: 0.375em;
     width: 4.5em;
 }
+.cat .body .clock .center-cover #text-label
+{
+    color: gray;
+    font-size: 0.5em;
+    font-weight: bolder;
+    margin-top: 2em;
+}
 .cat .body .clock .center-pin
 {
     background-color: black;
@@ -452,7 +459,9 @@ a:active
             <div class="tick tick-10-oclock"></div>
             <div class="tick tick-11-oclock"></div>
             <div class="tick tick-12-oclock"></div>
-            <div class="center-cover"></div>
+            <div class="center-cover">
+                <div id="text-label">CAT</div>
+            </div>
             <div id="hour-hand" class="hand"></div>
             <div id="minute-hand" class="hand"></div>
             <div id="second-hand" class="hand"></div>
@@ -467,12 +476,17 @@ a:active
     <div class="paw paw-bottom-left">&quot;&quot;</div>
     <div class="paw paw-bottom-right">&quot;&quot;</div>
 </div>
+
 <div class="copyright-notice"
     ><a href="https://github.com/tigerpointe/Learn-CSS3" target="_blank"
     >Copyright &copy; 2024 TigerPointe Software, LLC</a></div>
 
 <script type="text/javascript">
     (function () {
+
+        // define the weekdays
+        let days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+
         function update()
         // updates the clock with the current time
         {
@@ -486,18 +500,24 @@ a:active
             let min = (360 / 60) * now.getMinutes(); // 60 minutes
             let hrs = (360 / 12) * now.getHours();   // 12 hours
             let off = (360 / 12) * (min / 360);      // extra offset
-            document.getElementById("second-hand").style.transform =
+            let day = ('00' + now.getDate().toString()).slice(-2); // zero pad
+
+            // update the screen elements
+            document.getElementById('second-hand').style.transform =
                 `rotate(${sec}deg)`;
-            document.getElementById("minute-hand").style.transform =
+            document.getElementById('minute-hand').style.transform =
                 `rotate(${min}deg)`;
-            document.getElementById("hour-hand").style.transform =
+            document.getElementById('hour-hand').style.transform =
                 `rotate(${hrs + off}deg)`;
+            document.getElementById('text-label').innerHTML =
+                `${days[now.getDay()]}&nbsp;&nbsp;${day}`;
 
             // wait until the next second change before updating
             setTimeout(function() { update(); }, 1000 - now.getMilliseconds());
 
         }
         update(); /* starts the update loop */
+
     })();
     </script>
 
