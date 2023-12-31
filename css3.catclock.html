@@ -443,6 +443,7 @@ a:active
 {
     background-color: darkgray;
     border-radius: 50%;
+    box-shadow: 0 0 0.5em black inset;
     height: 1.5em;
     margin: 0.25em;
     width: 1.5em;
@@ -499,6 +500,7 @@ a:active
     <div class="paw paw-bottom-left">&quot;&quot;</div>
     <div class="paw paw-bottom-right">&quot;&quot;</div>
 </div>
+
 <div class="control-panel">
     <div id="swatch-0" class="swatch"></div>
     <div id="swatch-1" class="swatch"></div>
@@ -511,6 +513,7 @@ a:active
     <div id="swatch-8" class="swatch"></div>
     <div id="swatch-9" class="swatch"></div>
 </div>
+
 <div class="copyright-notice"
     ><a href="https://github.com/tigerpointe/Learn-CSS3" target="_blank"
     >Copyright &copy; 2024 TigerPointe Software, LLC</a></div>
@@ -518,7 +521,7 @@ a:active
 <script type="text/javascript">
     (function () {
 
-        // define the colors
+        // define the cat colors
         let cats = ['lightgray',
                     'hotpink',
                     'firebrick',
@@ -529,6 +532,8 @@ a:active
                     'teal',
                     'darkgreen',
                     'black'];
+
+        // define the tie colors
         let ties = ['darkred',
                     'silver',
                     'gold',
@@ -559,13 +564,13 @@ a:active
         }
 
         function setEvents()
-        // Sets the events for applying colors
+        // sets the events for changing colors
         {
             for (i = 0; i < cats.length; i++)
             {
                 swatch = document.getElementById('swatch-' + i.toString());
                 swatch.style.backgroundColor = cats[i];
-                let n = i; // use value, not reference
+                let n = i; // copy the value, not a reference
                 swatch.addEventListener('click',
                     function () { applyTheme(n); });
             }
