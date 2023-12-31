@@ -571,6 +571,7 @@ a:active
             {
                 swatch = document.getElementById('swatch-' + i.toString());
                 swatch.style.backgroundColor = cats[i];
+                swatch.style.borderColor = cats[i];
                 let n = i; // copy the value, not a reference
                 swatch.addEventListener('click',
                     function () { applyTheme(n); });
