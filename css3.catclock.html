@@ -6,6 +6,7 @@ https://github.com/tigerpointe
 History:
 01.00 2023-Dec-31 Scott S. Initial release.
 01.01 2024-Jan-01 Scott S. Add whiskers, optimize code.
+01.02 2024-Jan-02 Scott S. Add support for up to 10 colors.
 
 MIT License
 
@@ -155,7 +156,7 @@ a:active
 .cat .body .clock .center-pin
 {
     background-color: black;
-    border: .075em solid black;
+    border: 0.075em solid black;
     border-radius: 50%;
     height: 0.25em;
     left: 2.5em;
@@ -541,6 +542,7 @@ a:active
 </div>
 
 <div class="control-panel">
+    <!-- Allow a maximum of 10 swatches (id = 0-9) -->
     <div id="swatch-0" class="swatch"></div>
     <div id="swatch-1" class="swatch"></div>
     <div id="swatch-2" class="swatch"></div>
@@ -560,7 +562,7 @@ a:active
 <script type="text/javascript">
     (function () {
 
-        // define the cat colors
+        // define the cat colors (up to 10 values)
         let cats = ['lightgray',
                     'hotpink',
                     'firebrick',
@@ -572,7 +574,7 @@ a:active
                     'darkgreen',
                     'black'];
 
-        // define the tie colors
+        // define the related tie colors
         let ties = ['darkred',
                     'silver',
                     'gold',
@@ -605,14 +607,21 @@ a:active
         function setEvents()
         // sets the events for changing colors
         {
-            for (i = 0; i < cats.length; i++)
+            for (i = 0; i < 10; i++)
             {
                 swatch = document.getElementById('swatch-' + i.toString());
-                swatch.style.backgroundColor = cats[i];
-                swatch.style.borderColor = cats[i];
-                let n = i; // copy the value, not a reference
-                swatch.addEventListener('click',
-                    function () { applyTheme(n); });
+                if (i < cats.length)
+                {
+                    swatch.style.backgroundColor = cats[i];
+                    swatch.style.borderColor = cats[i];
+                    let n = i; // copy the value, not as a reference
+                    swatch.addEventListener('click',
+                        function () { applyTheme(n); });
+                }
+                else
+                {
+                    swatch.style.display = 'none'; // removes, if unused
+                }
             }
         }
         setEvents(); // configures the color swatches 
@@ -624,8 +633,8 @@ a:active
             // get the current date and time
             let now = new Date();
 
-            // calculate the rotations based on a circle of 360-degrees; add an
-            //  extra offset to the hour-hand rotation based on the minutes
+            // calculate the rotations based on a circle of 360-degrees; add
+            //  an extra offset to the hour-hand rotation based on the minutes
             let sec = (360 / 60) * now.getSeconds(); // 60 seconds
             let min = (360 / 60) * now.getMinutes(); // 60 minutes
             let hrs = (360 / 12) * now.getHours();   // 12 hours
@@ -643,7 +652,8 @@ a:active
                 `${days[now.getDay()]}&nbsp;&nbsp;${day}`;
 
             // wait until the next second change before updating
-            setTimeout(function() { update(); }, 1000 - now.getMilliseconds());
+            setTimeout(function() { update(); },
+                1000 - now.getMilliseconds());
 
         }
         update(); // starts the main update loop
