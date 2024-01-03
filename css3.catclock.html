@@ -84,6 +84,7 @@ a:active
 .copyright-notice
 {
     font-size: 0.5em;
+    margin-top: 0.25em;
 }
 </style>
 
@@ -114,6 +115,7 @@ a:active
     margin: auto;
     position: relative;
     text-align: center;
+    vertical-align: bottom;
     width: 10em;
 }
 .cat .body
@@ -472,21 +474,28 @@ a:active
 {
     border: 0.075em solid darkgray;
     border-radius: 0.25em;
+    color: dimgray;
     display: inline-block;
     font-family: sans-serif;
     padding: 0.25em;
     position: relative;
     text-align: center;
+    vertical-align: bottom;
 }
 .control-panel .swatch
 {
     background-color: darkgray;
-    border: 0.075em solid dimgray;
+    border: 0.075em solid darkgray;
     border-radius: 50%;
     box-shadow: 0 0 0.5em white inset;
     height: 1.5em;
     margin: 0.25em;
     width: 1.5em;
+}
+.control-panel .title-label
+{
+    font-size: 0.5em;
+    font-weight: bolder;
 }
 </style>
 
@@ -546,6 +555,7 @@ a:active
 </div>
 
 <div class="control-panel">
+    <div class="title-label">SELECT</div>
     <!-- Allow a maximum of 10 swatches (id = 0-9) -->
     <div id="swatch-0" class="swatch"></div>
     <div id="swatch-1" class="swatch"></div>
@@ -629,7 +639,7 @@ a:active
                 }
             }
         }
-        setEvents(); // configures the color swatches 
+        setEvents(); // configures the color swatches
 
         function update()
         // updates the clock with the current time
