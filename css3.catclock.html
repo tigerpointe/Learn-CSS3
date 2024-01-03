@@ -2,6 +2,10 @@
 <!--
 A CSS3 demo that displays a cat clock (without using images).
 
+The cat clock is created using rounded borders and background colors.
+The pupil and tail animations are implemented using keyframes.
+JavaScript is used to manage the color selectors and clock updates.
+
 https://github.com/tigerpointe
 History:
 01.00 2023-Dec-31 Scott S. Initial release.
@@ -599,22 +603,23 @@ a:active
         function applyTheme(id)
         // applies the theme settings to the clock
         {
-            cat = ((id < cats.length) ? id : 0 );
-            tie = ((id < ties.length) ? id : 0 );
+            let cat = ((id < cats.length) ? id : 0 );
+            let tie = ((id < ties.length) ? id : 0 );
             applyColors(cats[cat], ties[tie]);
         }
 
         function setEvents()
         // sets the events for changing colors
         {
-            for (i = 0; i < 10; i++)
+            for (let i = 0; i < 10; i++)
             {
-                swatch = document.getElementById('swatch-' + i.toString());
+                let swatch = document.getElementById(
+                    'swatch-' + i.toString());
                 if (i < cats.length)
                 {
                     swatch.style.backgroundColor = cats[i];
                     swatch.style.borderColor = cats[i];
-                    let n = i; // copy the value, not as a reference
+                    let n = i; // copies the value, not as a reference
                     swatch.addEventListener('click',
                         function () { applyTheme(n); });
                 }
