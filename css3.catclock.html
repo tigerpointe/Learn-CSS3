@@ -472,12 +472,13 @@ a:active
 }
 .control-panel
 {
-    border: 0.075em solid darkgray;
-    border-radius: 0.25em;
-    color: dimgray;
+    border: 0.15em solid darkgray;
+    border-radius: 0.5em;
+    color: darkgray;
     display: inline-block;
     font-family: sans-serif;
-    padding: 0.25em;
+    font-size: 0.5em;
+    padding: 0.5em;
     position: relative;
     text-align: center;
     vertical-align: bottom;
@@ -485,17 +486,19 @@ a:active
 .control-panel .swatch
 {
     background-color: darkgray;
-    border: 0.075em solid darkgray;
+    border: 0.15em solid darkgray;
     border-radius: 50%;
-    box-shadow: 0 0 0.5em white inset;
-    height: 1.5em;
-    margin: 0.25em;
-    width: 1.5em;
+    box-shadow: 0 0 1.25em white inset;
+    height: 3em;
+    margin: 0.5em auto 0.5em auto;
+    width: 3em;
 }
 .control-panel .title-label
 {
-    font-size: 0.5em;
+    border: 0.15em solid darkgray;
+    border-radius: 10%;
     font-weight: bolder;
+    padding: 0.375em;
 }
 </style>
 
@@ -613,6 +616,8 @@ a:active
         function applyTheme(id)
         // applies the theme settings to the clock
         {
+            if (cats.length < 1) { return; }
+            if (ties.length < 1) { return; }
             let cat = ((id < cats.length) ? id : 0 );
             let tie = ((id < ties.length) ? id : 0 );
             applyColors(cats[cat], ties[tie]);
