@@ -11,6 +11,7 @@ History:
 01.00 2023-Dec-31 Scott S. Initial release.
 01.01 2024-Jan-01 Scott S. Add whiskers, optimize code.
 01.02 2024-Jan-02 Scott S. Add support for up to 10 colors.
+01.03 2024-Jan-03 Scott S. Add search engine optimizations.
 
 MIT License
 
@@ -43,6 +44,10 @@ https://www.cancer.org/
 <head>
 
 <title>CSS3 Cat Clock</title>
+<meta name="keywords" content="css, html, javascript, analog, cat, clock" />
+<meta name="description" content="Display a vintage cat clock." />
+<meta name="author" content="TigerPointe Software, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta charset="utf-8" />
 
 <!-- Page Styles (not related to the cat clock) -->
@@ -618,8 +623,8 @@ a:active
         {
             if (cats.length < 1) { return; }
             if (ties.length < 1) { return; }
-            let cat = ((id < cats.length) ? id : 0 );
-            let tie = ((id < ties.length) ? id : 0 );
+            let cat = ((id >= 0) && (id < cats.length) ? id : 0 );
+            let tie = ((id >= 0) && (id < ties.length) ? id : 0 );
             applyColors(cats[cat], ties[tie]);
         }
 
