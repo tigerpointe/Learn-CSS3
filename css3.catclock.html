@@ -105,6 +105,11 @@ a:active
     0%   { left: 0.5em; }
     100% { left: 1.5em; }
 }
+@keyframes move-pupil-reverse
+{
+    0%   { left: 1.5em; }
+    100% { left: 0.5em; }
+}
 @keyframes swing-tail
 {
     0%   { transform: rotate(-30deg); }
@@ -273,7 +278,7 @@ a:active
     top: 0.75em;
     width: 2.5em;
 }
-.cat .head .eye-left .pupil-left
+.cat .head .eye-left #pupil-left
 {
     animation-direction: alternate;
     animation-duration: 1s;
@@ -301,7 +306,7 @@ a:active
     top: 0.75em;
     width: 2.5em;
 }
-.cat .head .eye-right .pupil-right
+.cat .head .eye-right #pupil-right
 {
     animation-direction: alternate;
     animation-duration: 1s;
@@ -515,10 +520,10 @@ a:active
     <div class="ear-right"></div>
     <div class="head">
         <div class="eye-left">
-            <div class="pupil-left"></div>
+            <div id="pupil-left"></div>
         </div>
         <div class="eye-right">
-            <div class="pupil-right"></div>
+            <div id="pupil-right"></div>
         </div>
         <div class="muzzle">
             <div class="mouth"></div>
@@ -627,6 +632,16 @@ a:active
             let tie = ((id >= 0) && (id < ties.length) ? id : 0 );
             applyColors(cats[cat], ties[tie]);
         }
+
+        function crossEyes(left, right)
+        // sets the cross eye animation
+        {
+            document.getElementById(
+                'pupil-left').style.animationName = left;
+            document.getElementById(
+                'pupil-right').style.animationName = right;
+        }
+        //crossEyes('move-pupil', 'move-pupil-reverse');
 
         function setEvents()
         // sets the events for changing colors
