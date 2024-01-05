@@ -12,6 +12,7 @@ History:
 01.01 2024-Jan-01 Scott S. Add whiskers, optimize code.
 01.02 2024-Jan-02 Scott S. Add support for up to 10 colors.
 01.03 2024-Jan-03 Scott S. Add search engine optimizations.
+01.04 2024-Jan-04 Scott S. Add support for crossing eyes.
 
 MIT License
 
@@ -105,15 +106,25 @@ a:active
     0%   { left: 0.5em; }
     100% { left: 1.5em; }
 }
-@keyframes move-pupil-reverse
+@keyframes move-pupil-left
 {
-    0%   { left: 1.5em; }
-    100% { left: 0.5em; }
+    0%   { left: 1.75em; }
+    100% { left: 0.25em; }
+}
+@keyframes move-pupil-right
+{
+    0%   { left: 0.25em; }
+    100% { left: 1.75em; }
 }
 @keyframes swing-tail
 {
     0%   { transform: rotate(-30deg); }
     100% { transform: rotate(30deg);  }
+}
+@keyframes swing-tail-reverse
+{
+    0%   { transform: rotate(30deg);  }
+    100% { transform: rotate(-30deg); }
 }
 .cat
 {
@@ -425,7 +436,7 @@ a:active
     transform: rotate(25deg);
     transform-origin: top left;
 }
-.cat .tail
+.cat #tail-end
 {
     animation-direction: alternate;
     animation-duration: 1s;
@@ -534,7 +545,7 @@ a:active
         <div class="whisker whisker-bottom-left"></div>
         <div class="whisker whisker-bottom-right"></div>
     </div>
-    <div class="tail"></div>
+    <div id="tail-end"></div>
     <div class="body">
         <div class="clock">
             <div class="tick tick-01-oclock"></div>
@@ -633,19 +644,42 @@ a:active
             applyColors(cats[cat], ties[tie]);
         }
 
-        function setPupilAnimation(left, right)
-        // sets the pupil animation names
+        function setAnimation(left, right, tail)
+        // sets the animation names
         {
             document.getElementById(
                 'pupil-left').style.animationName = left;
             document.getElementById(
                 'pupil-right').style.animationName = right;
+            document.getElementById(
+                'tail-end').style.animationName = tail;
         }
-        //setPupilAnimation('move-pupil', 'move-pupil-reverse');
 
         function setEvents()
-        // sets the events for changing colors
+        // sets the event handlers
         {
+
+            // normal eyes
+            let pl = document.getElementById('pupil-left').parentElement;
+            pl.addEventListener('click', function ()
+                {
+                    setAnimation(
+                        'move-pupil',
+                        'move-pupil',
+                        'swing-tail');
+                });
+
+            // cross eyes
+            let pr = document.getElementById('pupil-right').parentElement;
+            pr.addEventListener('click', function ()
+                {
+                    setAnimation(
+                        'move-pupil-left',
+                        'move-pupil-right',
+                        'swing-tail-reverse');
+                });
+
+            // change color
             for (let i = 0; i < 10; i++)
             {
                 let swatch = document.getElementById(
@@ -663,8 +697,9 @@ a:active
                     swatch.style.display = 'none'; // removes, if unused
                 }
             }
+
         }
-        setEvents(); // configures the color swatches
+        setEvents(); // configures the interactive events
 
         function update()
         // updates the clock with the current time
