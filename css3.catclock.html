@@ -633,15 +633,15 @@ a:active
             applyColors(cats[cat], ties[tie]);
         }
 
-        function crossEyes(left, right)
-        // sets the cross eye animation
+        function setPupilAnimation(left, right)
+        // sets the pupil animation names
         {
             document.getElementById(
                 'pupil-left').style.animationName = left;
             document.getElementById(
                 'pupil-right').style.animationName = right;
         }
-        //crossEyes('move-pupil', 'move-pupil-reverse');
+        //setPupilAnimation('move-pupil', 'move-pupil-reverse');
 
         function setEvents()
         // sets the events for changing colors
