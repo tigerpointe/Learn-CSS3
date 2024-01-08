@@ -13,6 +13,7 @@ History:
 01.02 2024-Jan-02 Scott S. Add support for up to 10 colors.
 01.03 2024-Jan-03 Scott S. Add search engine optimizations.
 01.04 2024-Jan-04 Scott S. Add support for crossing eyes.
+01.05 2024-Jan-05 Scott S. Add clock hand box shadow.
 
 MIT License
 
@@ -185,6 +186,7 @@ a:active
     background-color: black;
     border: 0.075em solid black;
     border-radius: 50%;
+    box-shadow: 0.075em 0.075em 0.075em dimgray;
     height: 0.25em;
     left: 2.5em;
     position: absolute;
@@ -193,6 +195,7 @@ a:active
 }
 .cat .body .clock .hand
 {
+    box-shadow: 0.075em 0.075em 0.075em dimgray;
     left: 50%;
     position: absolute;
     transform: rotate(0deg);
@@ -201,13 +204,15 @@ a:active
 .cat .body .clock #hour-hand
 {
     background-color: black;
-    height: 1.5em;
-    top: 1.125em;
+    border-right: 0.05em solid black;
+    height: 1.75em;
+    top: 0.875em;
     width: 0.075em;
 }
 .cat .body .clock #minute-hand
 {
     background-color: black;
+    border-right: 0.05em solid black;
     height: 2.5em;
     top: 0.125em;
     width: 0.075em;
@@ -215,6 +220,7 @@ a:active
 .cat .body .clock #second-hand
 {
     background-color: crimson;
+    border-right: 0.05em solid crimson;
     height: 2.5em;
     top: 0.125em;
     width: 0.05em;
