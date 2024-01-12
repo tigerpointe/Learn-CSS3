@@ -675,7 +675,7 @@ a:active
         }
 
         function areEyesCrossed()
-        // tests for the eyes crossed flag
+        // checks for the eyes crossed flag
         {
             try
             {
@@ -765,6 +765,19 @@ a:active
         }
         setEvents(); // configures the interactive events
 
+        function setSavedEyesCrossed()
+        // sets the eyes as crossed, if required
+        {
+            if (areEyesCrossed())
+            {
+                applyAnimation(
+                    'move-pupil-left',
+                    'move-pupil-right',
+                    'swing-tail-reverse');
+            }
+        }
+        setSavedEyesCrossed(); // restores the crossed eyes
+
         function setSavedTheme()
         // sets the saved theme from local storage
         {
@@ -776,15 +789,6 @@ a:active
             catch(e) { }
         }
         setSavedTheme(); // restores the last selected theme
-
-        // restores whether the eyes are crossed
-        if (areEyesCrossed())
-        {
-            applyAnimation(
-                'move-pupil-left',
-                'move-pupil-right',
-                'swing-tail-reverse');
-        }
 
         function update()
         // updates the clock with the current time
