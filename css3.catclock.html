@@ -5,6 +5,7 @@ A CSS3 demo that displays a cat clock (without using images).
 The cat clock is created using rounded borders and background colors.
 The pupil and tail animations are implemented using keyframes.
 JavaScript is used to manage the color selectors and clock updates.
+Local storage is used to preserve the most recently selected color.
 
 https://github.com/tigerpointe
 History:
@@ -15,6 +16,7 @@ History:
 01.04 2024-Jan-04 Scott S. Add support for crossing eyes.
 01.05 2024-Jan-05 Scott S. Add clock hand box shadow.
 01.06 2024-Jan-06 Scott S. Add background gradient.
+01.07 2024-Jan-11 Scott S. Add local storage for theme id.
 
 MIT License
 
@@ -642,6 +644,17 @@ a:active
         // define the weekdays
         let days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
+        function applyAnimation(left, right, tail)
+        // applies the animation names to the clock
+        {
+            document.getElementById(
+                'pupil-left').style.animationName = left;
+            document.getElementById(
+                'pupil-right').style.animationName = right;
+            document.getElementById(
+                'tail-end').style.animationName = tail;
+        }
+
         function applyColors(cat, tie)
         // applies the color settings to the clock
         {
@@ -659,15 +672,14 @@ a:active
             applyColors(cats[cat], ties[tie]);
         }
 
-        function setAnimation(left, right, tail)
-        // sets the animation names
+        function saveTheme(id)
+        // saves the theme id to local storage
         {
-            document.getElementById(
-                'pupil-left').style.animationName = left;
-            document.getElementById(
-                'pupil-right').style.animationName = right;
-            document.getElementById(
-                'tail-end').style.animationName = tail;
+            try
+            {
+                localStorage.setItem('themeId', id);
+            }
+            catch(e) { }
         }
 
         function setEvents()
@@ -678,7 +690,7 @@ a:active
             let pl = document.getElementById('pupil-left').parentElement;
             pl.addEventListener('click', function ()
                 {
-                    setAnimation(
+                    applyAnimation(
                         'move-pupil',
                         'move-pupil',
                         'swing-tail');
@@ -688,13 +700,13 @@ a:active
             let pr = document.getElementById('pupil-right').parentElement;
             pr.addEventListener('click', function ()
                 {
-                    setAnimation(
+                    applyAnimation(
                         'move-pupil-left',
                         'move-pupil-right',
                         'swing-tail-reverse');
                 });
 
-            // change color
+            // change colors
             for (let i = 0; i < 10; i++)
             {
                 let swatch = document.getElementById(
@@ -704,8 +716,11 @@ a:active
                     swatch.style.backgroundColor = cats[i];
                     swatch.style.borderColor = cats[i];
                     let n = i; // copies the value, not as a reference
-                    swatch.addEventListener('click',
-                        function () { applyTheme(n); });
+                    swatch.addEventListener('click', function ()
+                        {
+                            applyTheme(n);
+                            saveTheme(n);
+                        });
                 }
                 else
                 {
@@ -715,6 +730,18 @@ a:active
 
         }
         setEvents(); // configures the interactive events
+
+        function setSavedTheme()
+        // sets the saved theme from local storage
+        {
+            try
+            {
+                id = localStorage.getItem('themeId');
+                if (id !== null) { applyTheme(parseInt(id)); }
+            }
+            catch(e) { }
+        }
+        setSavedTheme(); // restores the last selected theme
 
         function update()
         // updates the clock with the current time
