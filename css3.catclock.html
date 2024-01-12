@@ -5,7 +5,7 @@ A CSS3 demo that displays a cat clock (without using images).
 The cat clock is created using rounded borders and background colors.
 The pupil and tail animations are implemented using keyframes.
 JavaScript is used to manage the color selectors and clock updates.
-Local storage is used to preserve the most recently selected color.
+Local storage is used to preserve the state of the colors and eyes.
 
 https://github.com/tigerpointe
 History:
@@ -17,6 +17,7 @@ History:
 01.05 2024-Jan-05 Scott S. Add clock hand box shadow.
 01.06 2024-Jan-06 Scott S. Add background gradient.
 01.07 2024-Jan-11 Scott S. Add local storage for theme id.
+01.08 2024-Jan-12 Scott S. Add local storage for eyes crossed.
 
 MIT License
 
@@ -673,6 +674,36 @@ a:active
             applyColors(cats[cat], ties[tie]);
         }
 
+        function areEyesCrossed()
+        // tests for the eyes crossed flag
+        {
+            try
+            {
+                return (localStorage.getItem('eyesCrossed') !== null);
+            }
+            catch(e) { return false; }
+        }
+
+        function deleteEyesCrossed()
+        // deletes the eyes crossed flag
+        {
+            try
+            {
+                localStorage.removeItem('eyesCrossed');
+            }
+            catch(e) { }
+        }
+
+        function saveEyesCrossed()
+        // saves the eyes crossed flag
+        {
+            try
+            {
+                localStorage.setItem('eyesCrossed', 'enabled');
+            }
+            catch(e) { }
+        }
+
         function saveTheme(id)
         // saves the theme id to local storage
         {
@@ -695,6 +726,7 @@ a:active
                         'move-pupil',
                         'move-pupil',
                         'swing-tail');
+                    deleteEyesCrossed();
                 });
 
             // cross eyes
@@ -705,6 +737,7 @@ a:active
                         'move-pupil-left',
                         'move-pupil-right',
                         'swing-tail-reverse');
+                    saveEyesCrossed();
                 });
 
             // change colors
@@ -743,6 +776,15 @@ a:active
             catch(e) { }
         }
         setSavedTheme(); // restores the last selected theme
+
+        // restores whether the eyes are crossed
+        if (areEyesCrossed())
+        {
+            applyAnimation(
+                'move-pupil-left',
+                'move-pupil-right',
+                'swing-tail-reverse');
+        }
 
         function update()
         // updates the clock with the current time
