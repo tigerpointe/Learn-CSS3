@@ -391,7 +391,7 @@ a:active
     border-left: 0.125em solid var(--cat-color);
     height: 2.5em;
     position: absolute;
-    width: 0em;
+    width: 0.125em;
     transform-origin: top;
 }
 .cat .head .whisker-bottom-left
@@ -545,6 +545,7 @@ a:active
 </head>
 <body>
 
+<!-- Order defines the overlapping descendants -->
 <div class="cat">
     <div class="ear-left"></div>
     <div class="ear-right"></div>
@@ -766,7 +767,7 @@ a:active
         setEvents(); // configures the interactive events
 
         function setSavedEyesCrossed()
-        // sets the eyes as crossed, if enabled
+        // sets the eyes as crossed, if saved
         {
             if (areEyesCrossed())
             {
