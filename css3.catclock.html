@@ -784,7 +784,7 @@ a:active
         {
             try
             {
-                id = localStorage.getItem('themeId');
+                let id = localStorage.getItem('themeId');
                 if (id !== null) { applyTheme(parseInt(id)); }
             }
             catch(e) { }
