@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <!--
 Christmas 2026
 2026-11-12 scott-s Initial release.
@@ -29,6 +30,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
+
 <html lang="en">
 
 <head>
@@ -50,7 +52,10 @@ SOFTWARE.
             font-family: sans-serif;
             font-size: 12px;
             gap: 10px;
-            height: 100vh;
+            /* 100vh for older browsers */
+            min-height: 100vh;
+            /* 100svh for mobile browsers */
+            min-height: 100svh;
             justify-content: center;
             margin: 0;
         }
@@ -202,7 +207,7 @@ SOFTWARE.
             animation-duration: 3s;
             animation-iteration-count: infinite;
             animation-name: eyes-blink;
-            /* timing shows zero to full in 15% of duration, then hold */
+            /* timing advances zero to full in 15% of duration, then hold */
             animation-timing-function: linear(0, 1 15%, 1);
             background-color: #00f;
             border-radius: 50% 50% 30% 30%;
