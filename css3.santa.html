@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <!--
 Christmas 2026
 2026-11-12 scott-s Initial release.
@@ -30,7 +29,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-
 <html lang="en">
 
 <head>
@@ -84,8 +82,8 @@ SOFTWARE.
             animation-timing-function: ease-in-out;
             border: 2px solid #060;
             border-radius: 20px;
+            padding: 5px;
             text-align: center;
-            white-space: pre-line;
             width: 320px;
         }
 
@@ -100,6 +98,7 @@ SOFTWARE.
         .sentiment .text-keywords {
             font-family: cursive;
             font-size: 20px;
+            padding-bottom: 5px;
         }
     </style>
 
@@ -139,13 +138,11 @@ SOFTWARE.
 
         @keyframes snowfall {
             0% {
-                top: -90px;
-                transform: rotate(0);
+                transform: translateY(-90px) rotate(0);
             }
 
             100% {
-                top: 490px;
-                transform: rotate(720deg);
+                transform: translateY(490px) rotate(720deg);
             }
         }
 
@@ -375,9 +372,8 @@ SOFTWARE.
 
     <!-- top -->
     <div class="sentiment sentiment-top">
-        Warmest thoughts and best wishes
-        for a wonderful Christmas season.
-
+        <div>Warmest thoughts and best wishes</div>
+        <div>for a wonderful Christmas season.</div>
     </div>
 
     <!-- santa -->
@@ -419,10 +415,9 @@ SOFTWARE.
 
     <!-- bottom -->
     <div class="sentiment sentiment-bottom">
-        May
+        <div>May</div>
         <div class="text-keywords">Peace, Happiness &amp; Prosperity</div>
-        follow you always.
-
+        <div>follow you always.</div>
     </div>
 
 </body>
