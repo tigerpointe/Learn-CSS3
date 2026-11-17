@@ -2,6 +2,7 @@
 
 <!--
 Christmas 2026
+https://github.com/tigerpointe/Learn-CSS3
 2026-11-12 scott-s Initial release.
 
 Please consider giving to cancer research:
@@ -52,12 +53,12 @@ SOFTWARE.
             font-family: sans-serif;
             font-size: 12px;
             gap: 10px;
-            /* 100vh for older browsers, fixed height */
-            min-height: 100vh;
-            /* 100svh for mobile browsers, expanding toolbars */
-            min-height: 100svh;
             justify-content: center;
             margin: 0;
+            /* 100vh for older browsers, usually has a fixed height */
+            min-height: 100vh;
+            /* 100svh for mobile browsers, allows for expanding toolbars */
+            min-height: 100svh;
         }
 
         @keyframes rotate-top {
@@ -286,9 +287,9 @@ SOFTWARE.
             background-color: #d63031;
             border-radius: 100px 100px 20px 20px;
             height: 130px;
+            left: 35px;
             position: absolute;
             top: 255px;
-            left: 35px;
             width: 230px;
         }
 
@@ -304,7 +305,6 @@ SOFTWARE.
         }
 
         .santa .coat .buckle {
-            background-color: #2d3436;
             border: 5px solid #f1c40f;
             border-radius: 5px;
             bottom: 25px;
