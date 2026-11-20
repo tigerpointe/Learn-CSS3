@@ -4,7 +4,7 @@
 Christmas 2026
 https://github.com/tigerpointe/Learn-CSS3
 2026-11-12 scott-s Initial release.
-2026-11-20 scott-s Added outlines for printing.
+2026-11-20 scott-s Added outlines, media for printing.
 
 Please consider giving to cancer research:
 https://braintumor.org/
@@ -106,6 +106,15 @@ SOFTWARE.
             font-family: cursive;
             font-size: 20px;
             padding-bottom: 5px;
+        }
+
+        @media print {
+
+            /* disable animation */
+            .sentiment-top,
+            .sentiment-bottom {
+                animation-name: none;
+            }
         }
     </style>
 
@@ -386,6 +395,18 @@ SOFTWARE.
             animation-duration: 9s;
             font-size: 28px;
             left: 250px;
+        }
+
+        @media print {
+
+            /* disable animation */
+            .santa .face .eye-left,
+            .santa .face .eye-right,
+            .santa .mustache-left,
+            .santa .mustache-right,
+            .santa .snowflakes {
+                animation-name: none;
+            }
         }
     </style>
 </head>
