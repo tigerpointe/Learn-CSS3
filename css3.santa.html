@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <!--
 Christmas 2026
 https://github.com/tigerpointe/Learn-CSS3
@@ -32,7 +31,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-
 <html lang="en">
 
 <head>
@@ -108,7 +106,8 @@ SOFTWARE.
             padding-bottom: 5px;
         }
 
-        @media print {
+        @media print,
+        (prefers-reduced-motion: reduce) {
 
             /* disables animation */
             .sentiment-top,
@@ -397,7 +396,8 @@ SOFTWARE.
             left: 250px;
         }
 
-        @media print {
+        @media print,
+        (prefers-reduced-motion: reduce) {
 
             /* disables animation */
             .santa .face .eye-left,
