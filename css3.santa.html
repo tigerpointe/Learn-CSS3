@@ -4,6 +4,7 @@
 Christmas 2026
 https://github.com/tigerpointe/Learn-CSS3
 2026-11-12 scott-s Initial release.
+2026-11-20 scott-s Added outlines for printing.
 
 Please consider giving to cancer research:
 https://braintumor.org/
@@ -55,7 +56,7 @@ SOFTWARE.
             gap: 10px;
             justify-content: center;
             margin: 0;
-            /* 100vh for older browsers, usually have fixed heights */
+            /* 100vh for older browsers, usually having fixed heights */
             min-height: 100vh;
             /* 100svh for mobile browsers, allows for expanding toolbars */
             min-height: 100svh;
@@ -166,6 +167,7 @@ SOFTWARE.
             border-radius: 100px 100px 0 0;
             height: 70px;
             left: 65px;
+            outline: 1px solid #d63031;
             position: absolute;
             top: 30px;
             width: 170px;
@@ -203,7 +205,8 @@ SOFTWARE.
             width: 170px;
         }
 
-        .santa .face .eyes {
+        .santa .face .eye-left,
+        .santa .face .eye-right {
             animation-direction: alternate;
             animation-duration: 3s;
             animation-iteration-count: infinite;
@@ -212,26 +215,38 @@ SOFTWARE.
             animation-timing-function: linear(0, 1 15%, 1);
             background-color: #00f;
             border-radius: 50% 50% 30% 30%;
-            /* box-shadow creates the second eye */
-            box-shadow: 90px 0 0 #00f;
             height: 15px;
-            left: 35px;
+            outline: 1px solid #00f;
             position: absolute;
             top: 45px;
             width: 10px;
         }
 
-        .santa .face .cheeks {
+        .santa .face .eye-left {
+            left: 35px;
+        }
+
+        .santa .face .eye-right {
+            right: 35px;
+        }
+
+        .santa .face .cheek-left,
+        .santa .face .cheek-right {
             background-color: #ff9ff3;
             border-radius: 50%;
-            /* box-shadow creates the second cheek */
-            box-shadow: 115px 0 0 #ff9ff3;
             height: 15px;
-            left: 15px;
             opacity: 0.3;
             position: absolute;
             top: 55px;
             width: 25px;
+        }
+
+        .santa .face .cheek-left {
+            left: 15px;
+        }
+
+        .santa .face .cheek-right {
+            right: 15px;
         }
 
         .santa .face .nose {
@@ -239,6 +254,7 @@ SOFTWARE.
             border-radius: 50%;
             height: 30px;
             left: 70px;
+            outline: 1px solid #ff7675;
             position: absolute;
             top: 50px;
             width: 30px;
@@ -288,6 +304,7 @@ SOFTWARE.
             border-radius: 100px 100px 20px 20px;
             height: 130px;
             left: 35px;
+            outline: 1px solid #d63031;
             position: absolute;
             top: 255px;
             width: 230px;
@@ -392,8 +409,10 @@ SOFTWARE.
 
         <!-- face -->
         <div class="face">
-            <div class="eyes"></div>
-            <div class="cheeks"></div>
+            <div class="eye-left"></div>
+            <div class="eye-right"></div>
+            <div class="cheek-left"></div>
+            <div class="cheek-right"></div>
             <div class="nose"></div>
         </div>
 
